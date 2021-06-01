@@ -18,6 +18,13 @@ class FavouritesController < ApplicationController
     end
   end
 
+  def destroy
+    @favourite = Favourite.find(params[:id])
+    @favourite.destroy
+    authorize @favourite
+    redirect_to favourites_path
+  end
+
   private
 
   def restaurant_params

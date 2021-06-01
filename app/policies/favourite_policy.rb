@@ -5,6 +5,10 @@ class FavouritePolicy < ApplicationPolicy
     end
   end
 
+  def destroy?
+    user = record.user
+  end
+
   def create?
     true
   end
