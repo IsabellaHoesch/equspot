@@ -1,0 +1,9 @@
+<h2>Your favourites list</h2>
+
+<ul>
+  <% @favourites.each do |favourite| %>
+    <li>
+      <%= link_to (favourite.place).name, place_path(favourite) %>
+    </li>
+  <% end %>
+</ul>

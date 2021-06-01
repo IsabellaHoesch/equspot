@@ -16,6 +16,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @favourite = Favourite.new
     authorize @place
   end
 
