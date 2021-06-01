@@ -4,6 +4,15 @@ class PlacesController < ApplicationController
 
   def index
     @places = policy_scope(Place)
+
+    @markers = Place.geocoded.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { place: place }),
+        image_url: helpers.asset_url('EquRent.png')
+      }
+    end
   end
 
   def show
@@ -26,18 +35,18 @@ class PlacesController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     authorize @place
   end
-  
+
   def update
     authorize @place
     if @place.update(place_params)
       redirect_to place_path(@place)
     else
       render :edit
-    end  
+    end
   end
 
   private
