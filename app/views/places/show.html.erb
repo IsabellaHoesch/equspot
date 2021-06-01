@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div>
+    <h2><%= @place.name %></h2>
+
+    <%# if @place.photo.attached? %>
+      <%# <%= cl_image_path @place.photo.key, crop: :fill %>
+    <%# else %>
+      <%# <%= image_path 'sports_img.jpg', crop: :fill %>
+    <%# end %>
+    
+    <p><%= @place.address %></p>
+    <p><%= @place.description %></p>
+
+    <%# <%= @place.rating %>
+  </div>
+
+  <p><%= link_to "Edit", edit_place_path %></p>
+
+</div>
