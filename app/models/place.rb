@@ -8,5 +8,5 @@ class Place < ApplicationRecord
   has_many :sport_types, through: :sport_combinations
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10, message: "Description has to be at least 10 characters" }
-  validates :adress, presence: true
+  validates :address, presence: true
 end
