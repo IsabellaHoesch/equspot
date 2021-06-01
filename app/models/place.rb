@@ -9,4 +9,6 @@ class Place < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10, message: "Description has to be at least 10 characters" }
   validates :adress, presence: true
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
