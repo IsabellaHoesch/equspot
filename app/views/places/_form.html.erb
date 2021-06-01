@@ -1,0 +1,15 @@
+<div class="container">
+
+  <%= simple_form_for(@place, remote:true) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= f.input :name, placeholder: 'Name of the spot', label:false %>
+      <%= f.input :description, as: :text, placeholder: 'Enter a short description of the spot', label:false %>
+      <%= f.input :address, placeholder: 'Strasse 0, Munich', label:false %>
+      <%# <%= f.input :photo, as: :file, label:false %>
+    <div>
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+</div>
