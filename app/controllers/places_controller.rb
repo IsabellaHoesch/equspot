@@ -5,6 +5,19 @@ class PlacesController < ApplicationController
   def index
     @places = policy_scope(Place)
 
+    # search bar - by sport
+    @dropdown = SportType.all
+    if params[:query].present? && params[:sport][:id].present?
+      @places = Place.joins(:sport_combinations).where("places.name ILIKE ? AND sport_combinations.sport_type_id = ?", "%#{params[:query]}%", params[:sport][:id].to_i)
+    elsif params[:sport].present? && !params[:sport][:id].blank?
+      sql_query = "sport_types.id = :sport"
+      @places = Place.joins(:sport_types).where(sql_query, sport: params[:sport][:id].to_i)
+    elsif params[:query].present? && params[:sport][:id].blank?
+      sql_query = "name ILIKE :query"
+      @places = Place.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @places = Place.all
+
     @markers = Place.geocoded.map do |place|
       {
         lat: place.latitude,

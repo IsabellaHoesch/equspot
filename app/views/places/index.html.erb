@@ -13,6 +13,30 @@
   <div>
     <h1>Welcome to EquSpot!</h1>
 
+      <div>
+        <%# <%= form_with url: "/places", method: :get do |form| %> 
+          <%# <%= form.label :query, "Search for:" %>
+          <%# <%= form.text_field :query %> 
+          <%# <%= form.collection_select :sport, @dropdown, :id, :name, include_blank: true %>
+          <%# <%= form.submit "Search" %> 
+        <%# <% end %> 
+
+
+        <%= form_tag places_path, method: :get do %>
+        <%= text_field_tag :query, params[:query],
+        placeholder: "Search by name" %>
+        <div>
+          <%#= select_tag :sport, options_for_select(@dropdown)%>
+          <%= collection_select :sport, :id, @dropdown, :id, :name, include_blank: true %>
+          <%= submit_tag "Search by sport"%>
+        </div>
+        <% end %>
+      </div>
+
+
+
+
+
     <%= link_to "Add a place", new_place_path %>
 
     <% @places.each do |place| %>
