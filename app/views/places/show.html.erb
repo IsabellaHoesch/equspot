@@ -8,7 +8,7 @@
     <%# else %>
       <%# <%= image_path 'sports_img.jpg', crop: :fill %>
     <%# end %>
-    
+
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
 
@@ -18,3 +18,4 @@
   <p><%= link_to "Edit", edit_place_path %></p>
 
 </div>
+<%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>

@@ -13,7 +13,7 @@ SportType.destroy_all
   SportType.create(name: sport)
 end
 
-arko = User.new(email: "arko@hotmail.com", password: "1234567")
+arko = User.create(email: "arko@hotmail.com", password: "1234567")
 
 place1 = Place.create(name: "IsartorBasket", address: "Praterinsel 4, Munich", description: "Who wants to play Basker or Ping Pong, it is a perfect place for it", user: arko)
 place2 = Place.create(name: "Mini Calisthenics Park", address: "Flurstrasse 12, Munich", description: "A pretty small StreetWorkOut Park.", user: arko)
@@ -26,7 +26,3 @@ Place.all.each do |place|
     place.sport_types.push(SportType.all.sample)
   end
 end
-
-
-
-
