@@ -7,6 +7,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @favourite = Favourite.new
     authorize @place
   end
 
@@ -26,18 +27,18 @@ class PlacesController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     authorize @place
   end
-  
+
   def update
     authorize @place
     if @place.update(place_params)
       redirect_to place_path(@place)
     else
       render :edit
-    end  
+    end
   end
 
   private
