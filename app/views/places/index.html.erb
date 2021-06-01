@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div>
+    <h2>Here is our little cute map :)</h2>
+  </div>
+
+  <div>
+    <h1>Welcome to EquSpot!</h1>
+
+    <%= link_to "Add a place", new_place_path %>
+
+    <% @places.each do |place| %>
+      <%= link_to place.name, place_path(place) %>
+      <%= place.address %>
+      <%= place.description %>
+    <% end %>
+  </div>
+
+</div>

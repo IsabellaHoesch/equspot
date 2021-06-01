@@ -113,6 +113,8 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
+    nokogiri (1.11.6-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.11.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -128,6 +130,8 @@ GEM
     public_suffix (4.0.6)
     puma (4.3.8)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-proxy (0.7.0)
@@ -228,6 +232,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -244,6 +249,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 4.1)
+  pundit
   rails (~> 6.0.3, >= 6.0.3.7)
   redis (~> 4.0)
   sass-rails (>= 6)
