@@ -17,6 +17,7 @@ class PlacesController < ApplicationController
       @places = Place.where(sql_query, query: "%#{params[:query]}%")
     else
       @places = Place.all
+    end
 
       @markers = Place.geocoded.map do |place|
         {
@@ -31,6 +32,7 @@ class PlacesController < ApplicationController
 
   def show
     set_place
+    @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
     authorize @place
   end
 
@@ -71,7 +73,7 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :address, :description)
+    params.require(:place).permit(:name, :address, :description, photos: [])
   end
 
 end

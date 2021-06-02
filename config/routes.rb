@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :places, only: [ :index, :new, :create, :show, :edit, :update ] do
     resources :favourites, only: [ :create ]
     resources :comments, only: [ :new, :create]
+    resources :visits, only: [ :create ]
   end
   resources :favourites, only: [ :index, :destroy ]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
