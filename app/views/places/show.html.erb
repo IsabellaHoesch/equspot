@@ -28,7 +28,7 @@
     <p><%= @place.description %></p>
     <ul>
     <% @place.comments.each do |comment| %>
-      <li class="list-group-item"><%= comment.content %><%= link_to 'Remove',
+      <li class="list-group-item"><%= comment.content %> <%= link_to 'Remove',
           comment_path(comment),
           method: :delete,
           data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %></li>
