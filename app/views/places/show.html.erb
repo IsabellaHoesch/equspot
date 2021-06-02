@@ -18,6 +18,10 @@
 </div>
 
   <div>
+
+
+    <p id="weather" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>" data-name="<%= @place.name %>" data-apikey="<%=ENV['WEATHER_API_KEY']%>"></p>
+
     <h2><%= @place.name %></h2>
 
     <p><%= @place.address %></p>

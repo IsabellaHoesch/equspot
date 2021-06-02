@@ -29,9 +29,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 // Import mapbox
 import { initMapbox } from '../plugins/init_mapbox';
+import { weatherApi } from '../plugins/init_weather';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
   initMapbox();
+  weatherApi();
 });
+
+
