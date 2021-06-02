@@ -17,5 +17,15 @@
 
   <p><%= link_to "Edit", edit_place_path %></p>
 
+  <div class="flex-center mt-4">
+    <div class="counter">
+      <span><%= @visits_count %></span>
+      <p>people have visited <%= @place.name %> in the past <%=time_ago_in_words(180.minutes.ago) %></p>
+      <%= link_to 'Check-In', place_visits_path(@place), method: :post%>
+    </div>
+  </div>
+
+
+  <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
+
 </div>
-<%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>

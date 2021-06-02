@@ -31,6 +31,8 @@ class PlacesController < ApplicationController
 
   def show
     @favourite = Favourite.new
+    @place = Place.find(params[:id])
+    @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
     authorize @place
   end
 
