@@ -7,7 +7,7 @@ class FavouritesController < ApplicationController
   def create
     @user = current_user
     @place = Place.find(params[:place_id])
-    @favourite = Favourite.new(favourite_params)
+    @favourite = Favourite.new
     @favourite.user = @user
     @favourite.place = @place
     authorize @favourite
@@ -20,8 +20,8 @@ class FavouritesController < ApplicationController
 
   def destroy
     @favourite = Favourite.find(params[:id])
-    @favourite.destroy
     authorize @favourite
+    @favourite.destroy
     redirect_to favourites_path
   end
 

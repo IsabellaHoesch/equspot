@@ -3,7 +3,7 @@
 <ul>
   <% @favourites.each do |favourite| %>
     <li>
-      <%= link_to (favourite.place).name, place_path(favourite) %>
+      <%= link_to (favourite.place).name, place_path(favourite.place) %>
       <%= link_to "Delete",
               favourite_path(favourite),
               method: :delete,

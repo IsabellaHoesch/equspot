@@ -6,7 +6,7 @@ class FavouritePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user = record.user
+    user == record.user
   end
 
   def create?

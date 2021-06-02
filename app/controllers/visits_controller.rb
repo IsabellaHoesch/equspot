@@ -1,5 +1,4 @@
 class VisitsController < ApplicationController
-
   # def index
   #   # @place = Place.find(params[:place_id])
   #   @visits = policy_scope(Visit)
@@ -13,7 +12,7 @@ class VisitsController < ApplicationController
   def create
     @user = current_user
     @place = Place.find(params[:place_id])
-    @visit = Visit.new()
+    @visit = Visit.new
     @visit.user = @user
     @visit.place = @place
     authorize @visit
@@ -24,5 +23,4 @@ class VisitsController < ApplicationController
       render "places/show"
     end
   end
-
 end
