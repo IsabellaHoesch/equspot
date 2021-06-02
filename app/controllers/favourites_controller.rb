@@ -7,7 +7,7 @@ class FavouritesController < ApplicationController
   def create
     @user = current_user
     @place = Place.find(params[:place_id])
-    @favourite = Favourite.new
+    @favourite = Favourite.new(favourite_params)
     @favourite.user = @user
     @favourite.place = @place
     authorize @favourite
@@ -27,7 +27,7 @@ class FavouritesController < ApplicationController
 
   private
 
-  def restaurant_params
+  def favourite_params
     params.require(:favourite).permit(:place_id)
   end
 end

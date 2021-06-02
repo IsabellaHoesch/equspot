@@ -19,19 +19,19 @@ class PlacesController < ApplicationController
       @places = Place.all
     end
 
-    @markers = Place.geocoded.map do |place|
-      {
-        lat: place.latitude,
-        lng: place.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { place: place }),
-        image_url: helpers.asset_url('EquRent.png')
-      }
+      @markers = Place.geocoded.map do |place|
+        {
+          lat: place.latitude,
+          lng: place.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { place: place }),
+          image_url: helpers.asset_url('EquRent.png')
+        }
+      end
     end
   end
 
   def show
-    @favourite = Favourite.new
-    @place = Place.find(params[:id])
+    set_place
     @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
     authorize @place
   end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :places, only: [ :index, :new, :create, :show, :edit, :update ] do
     resources :favourites, only: [ :create ]
+    resources :comments, only: [ :new, :create]
     resources :visits, only: [ :create ]
   end
   resources :favourites, only: [ :index, :destroy ]
