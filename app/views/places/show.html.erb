@@ -1,13 +1,12 @@
 <div class="container">
 
   <div>
+
     <h2><%= @place.name %></h2>
 
-    <%# if @place.photo.attached? %>
-      <%# <%= cl_image_path @place.photo.key, crop: :fill %>
-    <%# else %>
-      <%# <%= image_path 'sports_img.jpg', crop: :fill %>
-    <%# end %>
+    <% @place.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, width: 400, height: 300, fit: :fill %>
+    <% end %>
 
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>

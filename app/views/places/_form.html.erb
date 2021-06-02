@@ -6,7 +6,7 @@
       <%= f.input :name, placeholder: 'Name of the spot', label:false %>
       <%= f.input :description, as: :text, placeholder: 'Enter a short description of the spot', label:false %>
       <%= f.input :address, placeholder: 'Strasse 0, Munich', label:false %>
-      <%# <%= f.input :photo, as: :file, label:false %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label:false %>
     <div>
       <%= f.button :submit %>
     </div>
