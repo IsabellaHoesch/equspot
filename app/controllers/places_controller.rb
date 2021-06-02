@@ -32,6 +32,7 @@ class PlacesController < ApplicationController
   def show
     set_place
     @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
+    @likes_count = @place.likes.where("created_at > ?", 180.minutes.ago).count
     authorize @place
   end
 
