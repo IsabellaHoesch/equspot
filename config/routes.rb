@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :favourites, only: [ :create ]
     resources :comments, only: [ :new, :create]
     resources :visits, only: [ :create ]
+    resources :likes, only: [ :create ]
   end
   resources :favourites, only: [ :index, :destroy ]
   resources :comments, only: [ :destroy ]
