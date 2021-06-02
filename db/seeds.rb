@@ -5,6 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'nokogiri'
+
+file      = File.open('pingpong.xml')
+document  = Nokogiri::XML(file)
+
+document.root.xpath('pingpong').each do |pp|
+  lat        = pp.xpath('lat').text
+  lng        = pp.xpath('lng').text
+  origin     = pp.xpath('origin').text
+
+  puts "#{lat}, a #{lng} beer from #{origin}"
+end
+
 Place.destroy_all
 User.destroy_all
 SportType.destroy_all
