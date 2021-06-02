@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     # @comment.place = @place
     # @comment.user = @user
     @comment = Comment.new
+    authorize @comment
   end
 
   def create
