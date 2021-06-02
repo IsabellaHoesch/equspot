@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @place = Place.find(params[:place_id])
     # @comment.place = @place
     # @comment.user = @user
-    @coment = Comment.new
+    @comment = Comment.new
   end
 
   def create

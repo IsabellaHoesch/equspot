@@ -16,6 +16,6 @@
   </div>
 
   <p><%= link_to "Edit", edit_place_path %></p>
-
+  <p><%= link_to 'Leave a comment', new_place_comment_path(@place) %></p>
 </div>
 <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
