@@ -17,6 +17,7 @@ class PlacesController < ApplicationController
       @places = Place.where(sql_query, query: "%#{params[:query]}%")
     else
       @places = Place.all
+    end
 
     @markers = Place.geocoded.map do |place|
       {
