@@ -7,7 +7,7 @@ class FavouritesController < ApplicationController
   def create
     @user = current_user
     @place = Place.find(params[:place_id])
-    @favourite = Favourite.new(favourite_params)
+    @favourite = Favourite.new
     @favourite.user = @user
     @favourite.place = @place
     authorize @favourite

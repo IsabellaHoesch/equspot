@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+SportCombination.destroy_all
+Visit.destroy_all
 Place.destroy_all
 User.destroy_all
 SportType.destroy_all
@@ -22,7 +24,7 @@ place4 = Place.create(name: "Hirschau", address: "Gyßlingstrasse 15, Munich", d
 place5 = Place.create(name: "MiniGolf OlyPark", address: "Spiridon-Louis-Ring 22, Munich", description: "18 mini golf course different shapes.", user: arko)
 
 Place.all.each do |place|
-  rand(1..2).times do  
+  rand(1..2).times do
     place.sport_types.push(SportType.all.sample)
   end
 end

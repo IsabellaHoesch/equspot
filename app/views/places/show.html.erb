@@ -22,7 +22,11 @@
 
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
-
+    <ul>
+    <% @place.comments.each do |comment| %>
+      <li class="list-group-item"><%= comment.content %></li>
+    <% end %>
+  </ul>
     <%# <%= @place.rating %>
   </div>
 
@@ -30,11 +34,7 @@
 
   <p><%= link_to 'Leave a comment', new_place_comment_path(@place) %></p>
 </div>
-<ul class="list-group">
-  <% @place.comments.each do |comment| %>
-  <li class="list-group-item"><%= comment.content %></li>
-  <% end %>
-</ul>
+
 
   <div class="flex-center mt-4">
     <div class="counter">
@@ -45,4 +45,4 @@
   </div>
 
   <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
-</div>
+

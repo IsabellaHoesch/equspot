@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   def new
-    @user = current_user
     @place = Place.find(params[:place_id])
     # @comment.place = @place
     # @comment.user = @user
@@ -16,7 +15,7 @@ class CommentsController < ApplicationController
     @comment.place = @place
     authorize @comment
     if @comment.save
-      redirect_to place_path(@comment), notice: "Added a comment."
+      redirect_to place_path(@place), notice: "Added a comment."
     else
       render "places/show"
     end
