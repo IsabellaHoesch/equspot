@@ -7,35 +7,54 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'nokogiri'
 
-file      = File.open('pingpong.xml')
-document  = Nokogiri::XML(file)
-
-document.root.xpath('pingpong').each do |pp|
-  lat        = pp.xpath('lat').text
-  lng        = pp.xpath('lng').text
-  origin     = pp.xpath('origin').text
-
-  puts "#{lat}, a #{lng} beer from #{origin}"
-end
-
+SportType.destroy_all
 Place.destroy_all
 User.destroy_all
-SportType.destroy_all
 
+
+# create sport types
 %w(Basketball Football Ping-Pong Calesthetics Surf Volleyball Trampoline).each do |sport|
   SportType.create(name: sport)
 end
 
+# create users
 arko = User.create(email: "arko@hotmail.com", password: "1234567")
+isa = User.create(email: "isa@hotmail.com", password: "1234567")
+tea = User.create(email: "tea@hotmail.com", password: "1234567")
+andrea = User.create(email: "andrea@hotmail.com", password: "1234567")
 
-place1 = Place.create(name: "IsartorBasket", address: "Praterinsel 4, Munich", description: "Who wants to play Basker or Ping Pong, it is a perfect place for it", user: arko)
-place2 = Place.create(name: "Mini Calisthenics Park", address: "Flurstrasse 12, Munich", description: "A pretty small StreetWorkOut Park.", user: arko)
-place3 = Place.create(name: "Hypopark", address: "Elsässer Strasse 6, Munich", description: "A small Park near Munich East Station. Next to the walk you can enjoy your freetime with skating.", user: arko)
-place4 = Place.create(name: "Hirschau", address: "Gyßlingstrasse 15, Munich", description: "Four beautiful tennis courts in the center of English Garden.", user: arko)
-place5 = Place.create(name: "MiniGolf OlyPark", address: "Spiridon-Louis-Ring 22, Munich", description: "18 mini golf course different shapes.", user: arko)
 
-Place.all.each do |place|
-  rand(1..2).times do  
-    place.sport_types.push(SportType.all.sample)
-  end
+# create places: ping-pong
+file      = File.open("pingpong.xml") # won´t find path, why?
+document  = Nokogiri::XML(file)
+
+document.root.xpath('pingpong').each do |pp|
+  name = pp.xpath('id').text
+  name.sub! 'M&#252;nchen', 'München'
+  address = pp.xpath('ort').text
+  description = pp.xpath('info').text
+  foto = pp.xpath('foto').text
+
+  place = Place.new(name: "Ping-Pong #{name}", address:address, description: description, user: arko)
+  place.photos.attach(io: URI.open("#{foto}"), filename: '1.png', content_type: 'image/png')
+  place.sport_types.push("Ping-Pong")
+  place.save
 end
+
+# basketball --> check test_file
+
+# create places: surf
+surf1 = Place.new(name: "Eisbachwelle", address: "Prinzregentenstraße, 80538 München", description: "Da das Surfen hier technisch anspruchsvoll und das Verletzungsrisiko wegen zementierten Störsteinen unter Wasser besonders groß ist, dürfen hier auf Basis einer Vereinbarung mit den städtischen Behörden nur sehr geübte Surfer mit mehreren Jahren Erfahrung ins Wasser.", user: isa)
+surf1.photos.attach(io: URI.open("https://www.sueddeutsche.de/muenchen/muenchen-surfen-eisbach-wellen-probleme-1.4623618"), filename: '1.png', content_type: 'image/png')
+surf1.sport_types.push("Surf")
+surf1.save
+
+surf2 = Place.new(name: "E2/Dianabadschwelle", address: "Flurstrasse 12, Munich", description: "Das Surfen an der Dianabadschwelle ist nicht legal und wird von der Stadt nur geduldet.", user: isa)
+surf2.photos.attach(io: URI.open("https://www.igsm.info/wp-content/uploads/2015/08/Dianabadschwelle.jpg"), filename: '1.png', content_type: 'image/png')
+surf2.sport_types.push("Surf")
+surf2.save
+
+surf3 = Place.new(name: "Floßlände", address: "Flurstrasse 12, Munich", description: "Die Welle läuft während der Floßsaison von Mai bis Oktober.", user: isa)
+surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326/1200x675?v=1591172107"), filename: '1.png', content_type: 'image/png')
+surf3.sport_types.push("Surf")
+surf3.save
