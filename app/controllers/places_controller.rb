@@ -19,14 +19,13 @@ class PlacesController < ApplicationController
       @places = Place.all
     end
 
-      @markers = Place.geocoded.map do |place|
-        {
-          lat: place.latitude,
-          lng: place.longitude,
-          info_window: render_to_string(partial: "info_window", locals: { place: place }),
-          image_url: helpers.asset_url('EquRent.png')
-        }
-      end
+    @markers = Place.geocoded.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { place: place }),
+        image_url: helpers.asset_url('EquRent.png')
+      }
     end
   end
 
