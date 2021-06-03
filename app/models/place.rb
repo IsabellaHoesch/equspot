@@ -1,13 +1,14 @@
 class Place < ApplicationRecord
   belongs_to :user
   has_many :visits, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :favourites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :sport_combinations, dependent: :destroy
   has_many :sport_types, through: :sport_combinations
   has_many_attached :photos
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 10, message: "Description has to be at least 10 characters" }
   validates :address, presence: true
   geocoded_by :address

@@ -76,6 +76,17 @@ ActiveRecord::Schema.define(version: 2021_06_03_140343) do
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "place_id", null: false
+    t.text "content"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_reviews_on_place_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "sport_combinations", force: :cascade do |t|
     t.bigint "sport_type_id", null: false
     t.bigint "place_id", null: false
@@ -123,6 +134,8 @@ ActiveRecord::Schema.define(version: 2021_06_03_140343) do
   add_foreign_key "likes", "places"
   add_foreign_key "likes", "users"
   add_foreign_key "places", "users"
+  add_foreign_key "reviews", "places"
+  add_foreign_key "reviews", "users"
   add_foreign_key "sport_combinations", "places"
   add_foreign_key "sport_combinations", "sport_types"
   add_foreign_key "visits", "places"
