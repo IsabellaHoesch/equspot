@@ -24,6 +24,7 @@
     <h2><%= @place.name %></h2>
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
+    <p>Rating: <%= @place.rating %></p>
     <ul>
       <% @place.reviews.last(3).each do |review| %>
         <li class="list-group-item"><%= review.content %> <%= link_to 'Remove',
