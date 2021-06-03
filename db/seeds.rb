@@ -1,7 +1,3 @@
-# todos: 
-# save basketball data to .csv
-# different markers per sport
-
 require 'nokogiri'
 require 'open-uri'
 
@@ -10,9 +6,12 @@ Place.destroy_all
 User.destroy_all
 
 # create sport types
-%w(Basketball Football Ping-Pong Calesthetics Surf Volleyball Trampoline).each do |sport|
-  SportType.create(name: sport)
+%w(Basketball Ping-Pong Surf).each do |sporttype|
+  sport = SportType.new(name: sporttype)
+  sport.photo.attach(io: File.open("app/assets/images/#{sporttype}.png"), filename: "#{sporttype}.png", content_type: 'image/png')
+  sport.save
 end
+
 
 # create users
 arko = User.create(email: "arko@hotmail.com", password: "1234567")
@@ -40,23 +39,24 @@ puts "#{count} Ping-Pong entries seeded"
 
 
 # basketball --> check test_file
+
+
+
 count = 0
-prep_url = "https://www.courtsoftheworld.com/germany/munich/"
-html_content = URI.open(prep_url).read
-doc = Nokogiri::HTML(html_content)
+# prep_url = "https://www.courtsoftheworld.com/germany/munich/"
+# html_content = URI.open(prep_url).read
+doc = Nokogiri::HTML(File.open('db/basketball.html'), nil, 'utf-8')
 elements = doc.search('.owl-headline')
 elements.each_with_index do |e, i|
   address =  e.text.strip
   address.sub! 'Munich', ' Munich'
   photo = "https://www.courtsoftheworld.com#{doc.css('div.owl-slide-parent a').map { |link| link['href'] }[i]}"
-  
   p = Place.create(name: "Basketball #{i}", address: address, description: "missing description", user: isa)
   p.photos.attach(io: URI.open(photo), filename: "#{count}.png", content_type: 'image/png')
   p.sport_types.push(SportType.where(name: "Basketball"))
   p.save
   count += 1
 end
-# save this as .csv file and read from there?
 puts "#{count} Basketball entries seeded"
 
 # calisthetics --> check test_file
@@ -78,4 +78,4 @@ surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326
 surf3.sport_types.push(SportType.where(name: "Surf"))
 surf3.save
 
-puts " 3 Surf entries seeded"
+puts "3 Surf entries seeded"
