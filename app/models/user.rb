@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :comments
   has_many :visits
+  has_many :reviews
 end
