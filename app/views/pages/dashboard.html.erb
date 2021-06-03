@@ -1,8 +1,8 @@
 <div>
-  <p>Hello <%= current_user.email %></p>
+  <p>Hello <%= current_user.first_name %></p>
 </div>
 <div>
-  <p>First name:</p>
-  <p>Last name:</p>
-  <p>E-Mail:</p>
+  <p>First name: <%= current_user.first_name%></p>
+  <p>Last name: <%= current_user.last_name%></p>
+  <p>E-Mail: <%= current_user.email%></p>
 </div>
