@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_124246) do
+ActiveRecord::Schema.define(version: 2021_06_03_125729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,13 +77,13 @@ ActiveRecord::Schema.define(version: 2021_06_03_124246) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "place_id", null: false
     t.text "content"
-    t.bigint "places_id", null: false
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "rating"
-    t.bigint "user_id", null: false
-    t.index ["places_id"], name: "index_reviews_on_places_id"
+    t.index ["place_id"], name: "index_reviews_on_place_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_124246) do
   add_foreign_key "likes", "places"
   add_foreign_key "likes", "users"
   add_foreign_key "places", "users"
-  add_foreign_key "reviews", "places", column: "places_id"
+  add_foreign_key "reviews", "places"
   add_foreign_key "reviews", "users"
   add_foreign_key "sport_combinations", "places"
   add_foreign_key "sport_combinations", "sport_types"
