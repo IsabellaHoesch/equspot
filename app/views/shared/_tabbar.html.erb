@@ -18,41 +18,47 @@
             <% end %>
         </li>
         <li>
+
+            <%= link_to favourites_path do %>
+
+                <div>
+                    <span>
+                        <svg>
+                            <i class="fas fa-search"></i>
+                        </svg>
+                    </span>
+                    <span>
+                        <svg>
+                            <i class="fas fa-search"></i>
+                        </svg>
+                    </span>
+                </div>
+
+                <strong>Favs</strong>
+
+            <% end %>
+        </li>
+        <li>
             <%= link_to favourites_path do %>
                 <div>
                     <span>
                         <svg>
-                           <i class="far fa-star"></i>
+                           <i class="fas fa-crown"></i>
                         </svg>
                     </span>
                     <span>
                         <svg>
-                           <i class="far fa-star"></i>
+                           <i class="fas fa-crown"></i>
                         </svg>
                     </span>
                 </div>
-                <strong>Favs</strong>
+                <strong>Favourites</strong>
             <% end %>
         </li>
         <li>
-            <%= link_to places_path do %>
-                <div>
-                    <span>
-                        <svg>
-                            <i class="fas fa-search"></i>
-                        </svg>
-                    </span>
-                    <span>
-                        <svg>
-                            <i class="fas fa-search"></i>
-                        </svg>
-                    </span>
-                </div>
-                <strong>Search</strong>
-            <% end %>
-        </li>
-        <li>
+
             <%= link_to dashboard_path do %>
+
                 <div>
                     <span>
                         <svg>
@@ -66,7 +72,9 @@
                     </span>
                 </div>
                 <strong>Profile</strong>
+
             <% end %>
+
         </li>
     </ul>
 </nav>

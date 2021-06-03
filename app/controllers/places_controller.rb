@@ -1,9 +1,10 @@
 class PlacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_place, only: [ :show, :edit, :update ]
-
+  
   def index
     @places = policy_scope(Place)
+
 
     # search bar - by sport
     @dropdown = SportType.all
@@ -19,12 +20,13 @@ class PlacesController < ApplicationController
       @places = Place.all
     end
 
-    @markers = Place.geocoded.map do |place|
+    @markers = @places.geocoded.map do |place|
       {
         lat: place.latitude,
         lng: place.longitude,
         info_window: render_to_string(partial: "info_window", locals: { place: place }),
-        image_url: helpers.asset_url('basketball.png')
+        
+        image_url: helpers.asset_url("#{place.sport_types.first.name}.png")
       }
     end
   end
@@ -73,6 +75,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :address, :description, photos: [])
+    params.require(:place).permit(:name, :address, :description, :rating, photos: [])
   end
 end
