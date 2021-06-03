@@ -25,14 +25,13 @@
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
     <ul>
-    <% @place.comments.each do |comment| %>
-      <li class="list-group-item"><%= comment.content %> <%= link_to 'Remove',
-          comment_path(comment),
-          method: :delete,
-          data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %></li>
-    <% end %>
-  </ul>
-    <%# <%= @place.rating %>
+      <% @place.reviews.last(3).each do |review| %>
+        <li class="list-group-item"><%= review.content %> <%= link_to 'Remove',
+            review_path(review),
+            method: :delete,
+            data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %></li>
+      <% end %>
+    </ul>
   </div>
 
   <p><%= link_to "Edit", edit_place_path %></p>
