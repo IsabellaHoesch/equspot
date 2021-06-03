@@ -18,7 +18,7 @@
             <% end %>
         </li>
         <li>
-            <a>
+            <%= link_to favourites_path do %>
                 <div>
                     <span>
                         <svg>
@@ -32,7 +32,7 @@
                     </span>
                 </div>
                 <strong>Favs</strong>
-            </a>
+            <% end %>
         </li>
         <li>
             <%= link_to places_path do %>
@@ -70,4 +70,4 @@
         </li>
     </ul>
 </nav>
-            
+
