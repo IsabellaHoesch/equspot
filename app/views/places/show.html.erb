@@ -54,7 +54,7 @@
   <div class="flex-center mt-4">
     <div class="counter2">
       <span><%= @likes_count %></span>
-      <p>people have liked <%= @place.name %> in the past <%=time_ago_in_words(180.minutes.ago) %></p>
+      <p>people have liked <%= @place.name %></p>
       <%= link_to 'Like', place_likes_path(@place), method: :post%>
     </div>
   </div>
