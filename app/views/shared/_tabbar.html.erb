@@ -1,0 +1,77 @@
+<nav class="tabbar">
+    <ul>
+        <li>
+           <%= link_to root_path do %>
+                <div>
+                    <span>
+                        <svg>
+                            <i class="fas fa-home"></i>
+                        </svg>
+                    </span>
+                    <span>
+                        <svg>
+                            <i class="fas fa-home"></i>
+                        </svg>
+                    </span>
+                </div>
+                <strong>Home</strong>
+            <% end %>
+        </li>
+        <li>
+
+            <%= link_to favourites_path do %>
+
+                <div>
+                    <span>
+                        <svg>
+                            <i class="fas fa-search"></i>
+                        </svg>
+                    </span>
+                    <span>
+                        <svg>
+                            <i class="fas fa-search"></i>
+                        </svg>
+                    </span>
+                </div>
+
+                <strong>Favs</strong>
+
+            <% end %>
+        </li>
+        <li>
+            <%= link_to favourites_path do %>
+                <div>
+                    <span>
+                        <svg>
+                           <i class="fas fa-crown"></i>
+                        </svg>
+                    </span>
+                    <span>
+                        <svg>
+                           <i class="fas fa-crown"></i>
+                        </svg>
+                    </span>
+                </div>
+                <strong>Favourites</strong>
+            <% end %>
+        </li>
+        <li>
+            <%= link_to new_user_session_path do %>
+                <div>
+                    <span>
+                        <svg>
+                            <i class="far fa-user"></i>
+                        </svg>
+                    </span>
+                    <span>
+                        <svg>
+                           <i class="far fa-user"></i>
+                        </svg>
+                    </span>
+                </div>
+                <strong>Profile</strong>
+           <% end %>
+        </li>
+    </ul>
+</nav>
+

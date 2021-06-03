@@ -1,7 +1,8 @@
+
 require 'nokogiri'
 require 'open-uri'
 
-SportType.destroy_all
+SportCombination.destroy_all
 Place.destroy_all
 User.destroy_all
 
@@ -14,6 +15,7 @@ end
 
 
 # create users
+
 arko = User.create(email: "arko@hotmail.com", password: "1234567")
 isa = User.create(email: "isa@hotmail.com", password: "1234567")
 tea = User.create(email: "tea@hotmail.com", password: "1234567")
@@ -78,4 +80,26 @@ surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326
 surf3.sport_types.push(SportType.where(name: "Surf"))
 surf3.save
 
+
 puts "3 Surf entries seeded"
+
+place1 = Place.create(name: "IsartorBasket", address: "Praterinsel 4, Munich", description: "Who wants to play Basker or Ping Pong, it is a perfect place for it", user: arko)
+place1.photos.attach(io: File.open('app/assets/images/sports_img.jpg'), filename: 'sports_img.jpg')
+
+
+place2 = Place.create(name: "Mini Calisthenics Park", address: "Flurstrasse 12, Munich", description: "A pretty small StreetWorkOut Park.", user: arko)
+place2.photos.attach(io: File.open('app/assets/images/sports_img.jpg'), filename: 'sports_img.jpg')
+place3 = Place.create(name: "Hypopark", address: "Elsässer Strasse 6, Munich", description: "A small Park near Munich East Station. Next to the walk you can enjoy your freetime with skating.", user: arko)
+place3.photos.attach(io: File.open('app/assets/images/sports_img.jpg'), filename: 'sports_img.jpg')
+place4 = Place.create(name: "Hirschau", address: "Gyßlingstrasse 15, Munich", description: "Four beautiful tennis courts in the center of English Garden.", user: arko)
+place4.photos.attach(io: File.open('app/assets/images/sports_img.jpg'), filename: 'sports_img.jpg')
+place5 = Place.create(name: "MiniGolf OlyPark", address: "Spiridon-Louis-Ring 22, Munich", description: "18 mini golf course different shapes.", user: arko)
+place5.photos.attach(io: File.open('app/assets/images/sports_img.jpg'), filename: 'sports_img.jpg')
+
+
+Place.all.each do |place|
+  rand(1..2).times do
+    place.sport_types.push(SportType.all.sample)
+  end
+end
+
