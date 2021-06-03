@@ -9,7 +9,7 @@ class PagesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         info_window: render_to_string(partial: "places/info_window", locals: { place: place }),
-        image_url: helpers.asset_url('basketball.png')
+        image_url: helpers.asset_url('Basketball.png')
       }
     end
   end
