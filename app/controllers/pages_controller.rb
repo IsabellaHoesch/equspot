@@ -9,8 +9,12 @@ class PagesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         info_window: render_to_string(partial: "places/info_window", locals: { place: place }),
-        image_url: helpers.asset_url('basketball.png')
+        image_url: helpers.asset_url("#{place.sport_types.first.name}.png")
       }
     end
+  end
+
+  def dashboard
+    @user = current_user
   end
 end

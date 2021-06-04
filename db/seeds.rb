@@ -16,10 +16,10 @@ end
 
 # create users
 
-arko = User.create(email: "arko@hotmail.com", password: "1234567")
-isa = User.create(email: "isa@hotmail.com", password: "1234567")
-tea = User.create(email: "tea@hotmail.com", password: "1234567")
-andrea = User.create(email: "andrea@hotmail.com", password: "1234567")
+arko = User.create(email: "arko@hotmail.com", password: "1234567", first_name: "Armen", last_name: "Kaltak")
+isa = User.create(email: "isa@hotmail.com", password: "1234567", first_name: "Isabella", last_name: "Hoesch")
+tea = User.create(email: "tea@hotmail.com", password: "1234567", first_name: "Tea", last_name: "Filipovic")
+andrea = User.create(email: "andrea@hotmail.com", password: "1234567", first_name: "Andrea", last_name: "Furthmair")
 
 
 # create places: ping-pong

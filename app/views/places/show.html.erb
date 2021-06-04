@@ -19,14 +19,11 @@
 
   <div>
 
-
     <p id="weather" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>" data-name="<%= @place.name %>" data-apikey="<%=ENV['WEATHER_API_KEY']%>"></p>
 
     <h2><%= @place.name %></h2>
-
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
-    <p>Rating: <%= @place.rating %></p>
     <ul>
     <% @place.comments.each do |comment| %>
       <li class="list-group-item"><%= comment.content %> <%= link_to 'Remove',
@@ -41,7 +38,7 @@
   <p><%= link_to "Edit", edit_place_path %></p>
 
   <p><%= link_to 'Leave a comment', new_place_comment_path(@place) %></p>
-
+  <p><%= link_to 'Leave a review', new_place_review_path(@place) %></p>
 </div>
 
 
