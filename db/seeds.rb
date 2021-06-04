@@ -2,7 +2,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-n = 0..10
+n = 0..5
 
 SportCombination.destroy_all
 Message.destroy_all
@@ -85,7 +85,7 @@ calist[n].each do |cal|
   foto = doc.at_css('#links > a > img').attr('src')
   name = doc.search('#well > h1').text.strip
   address = doc.xpath('//*[@id="content-l-container"]/address/text()').text.strip
-  place = Place.new(name: "#{name}", address:address, description: description, user: tea)
+  place = Place.new(name: "#{name}", address:address, description: "missing description", user: tea)
   place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.png", content_type: 'image/png')
   place.sport_types.push(SportType.find_by(name: "Calisthetics"))
   place.save
