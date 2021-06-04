@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   resources :places, only: [ :index, :new, :create, :show, :edit, :update ] do
     resources :favourites, only: [ :create ]
     resources :visits, only: [ :create ]
-    resources :reviews, only: [ :new, :create, :destroy ]
+    resources :reviews, only: [ :new, :create ]
   end
   resources :favourites, only: [ :index, :destroy ]
-
+  resources :reviews, only: [ :destroy ]
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
