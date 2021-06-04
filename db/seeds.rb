@@ -8,7 +8,9 @@ Chatroom.destroy_all
 Place.destroy_all
 SportType.destroy_all
 User.destroy_all
-
+Review.destroy_all
+Comment.destroy_all
+Visit.destroy_all
 
 # create sport types and chatrooms
 %w(Basketball Ping-Pong Surf).each do |sporttype|
