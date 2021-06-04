@@ -22,20 +22,11 @@
     <h2><%= @place.name %></h2>
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
-    <ul>
-    <% @place.comments.each do |comment| %>
-      <li class="list-group-item"><%= comment.content %> <%= link_to 'Remove',
-          comment_path(comment),
-          method: :delete,
-          data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %></li>
-    <% end %>
-  </ul>
-    <%# <%= @place.rating %>
+
   </div>
 
   <p><%= link_to "Edit", edit_place_path %></p>
 
-  <p><%= link_to 'Leave a comment', new_place_comment_path(@place) %></p>
   <p><%= link_to 'Leave a review', new_place_review_path(@place) %></p>
 </div>
 
@@ -47,16 +38,11 @@
       <%= link_to 'Check-In', place_visits_path(@place), method: :post%>
     </div>
   </div>
-  <div class="flex-center mt-4">
-    <div class="counter2">
-      <span><%= @likes_count %></span>
-      <p>people have liked <%= @place.name %></p>
-      <%= link_to 'Like', place_likes_path(@place), method: :post%>
-    </div>
 
     <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
     <%  %>
     <%= link_to "Chat", chatroom_path(@place.sport_types.first.chatroom), class: "button btn btn-primary mt-1 w-100" %>
   </div>
 </div>
+
 

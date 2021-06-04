@@ -7,13 +7,10 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: :contact
   resources :places, only: [ :index, :new, :create, :show, :edit, :update ] do
     resources :favourites, only: [ :create ]
-    resources :comments, only: [ :new, :create]
     resources :visits, only: [ :create ]
-    resources :likes, only: [ :create ]
     resources :reviews, only: [ :new, :create, :destroy ]
   end
   resources :favourites, only: [ :index, :destroy ]
-  resources :comments, only: [ :destroy ]
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create

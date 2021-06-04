@@ -25,6 +25,7 @@ class PlacesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         info_window: render_to_string(partial: "info_window", locals: { place: place }),
+
         image_url: helpers.asset_url("#{place.sport_types.first.name}.png")
       }
     end
@@ -33,7 +34,6 @@ class PlacesController < ApplicationController
   def show
     set_place
     @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
-    @likes_count = @place.likes.where("created_at > ?", 180.minutes.ago).count
     authorize @place
   end
 
