@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_place, only: [ :show, :edit, :update ]
-  
+
   def index
     @places = policy_scope(Place)
 
@@ -25,7 +25,6 @@ class PlacesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         info_window: render_to_string(partial: "info_window", locals: { place: place }),
-        
         image_url: helpers.asset_url("#{place.sport_types.first.name}.png")
       }
     end

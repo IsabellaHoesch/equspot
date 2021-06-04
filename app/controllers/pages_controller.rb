@@ -15,7 +15,18 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @places = Place.all
     @user = current_user
     @sporttypes = SportType.all
+  end
+
+  def about
+  end
+
+  def contact
+  end
+
+  def profile
+    @user = current_user
   end
 end
