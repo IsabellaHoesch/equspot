@@ -55,6 +55,8 @@
       <p>people have liked <%= @place.name %></p>
       <%= link_to 'Like', place_likes_path(@place), method: :post%>
     </div>
-  </div>
-  <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
 
+  <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
+  <%  %>
+  <%= link_to "Chat", chatroom_path(@place.sport_types.first.chatroom), class: "button btn btn-primary mt-1 w-100" %>
+</div>

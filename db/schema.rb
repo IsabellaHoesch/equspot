@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_06_03_140343) do
-
+ActiveRecord::Schema.define(version: 2021_06_04_103029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_06_03_140343) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sport_type_id", null: false
+    t.index ["sport_type_id"], name: "index_chatrooms_on_sport_type_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -128,9 +128,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_140343) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-
     t.string "nickname"
-
     t.string "first_name"
     t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -148,6 +146,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_140343) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "sport_types"
   add_foreign_key "comments", "places"
   add_foreign_key "comments", "users"
   add_foreign_key "favourites", "places"
