@@ -16,5 +16,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @sporttypes = SportType.all
   end
 end

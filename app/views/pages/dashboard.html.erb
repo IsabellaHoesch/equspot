@@ -6,3 +6,11 @@
   <p>Last name: <%= current_user.last_name%></p>
   <p>E-Mail: <%= current_user.email%></p>
 </div>
+
+<div>
+<h3>Join chatrooms</h3>
+<% @sporttypes.each do |sport| %>
+  <%= link_to sport.name, chatroom_path(sport.chatroom), class: "button btn btn-primary mt-1 w-100" %>
+  <% end %>
+</div>
+

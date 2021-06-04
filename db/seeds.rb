@@ -3,14 +3,19 @@ require 'nokogiri'
 require 'open-uri'
 
 SportCombination.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 Place.destroy_all
+SportType.destroy_all
 User.destroy_all
 
-# create sport types
+
+# create sport types and chatrooms
 %w(Basketball Ping-Pong Surf).each do |sporttype|
   sport = SportType.new(name: sporttype)
   sport.photo.attach(io: File.open("app/assets/images/#{sporttype}.png"), filename: "#{sporttype}.png", content_type: 'image/png')
   sport.save
+  chat = Chatroom.create(name: "#{sporttype} Chatroom", sport_type: sport)
 end
 
 
