@@ -15,6 +15,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @places = Place.all
     @user = current_user
+    # @past_visits = @user.visits
   end
 end
