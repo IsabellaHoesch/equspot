@@ -2,9 +2,10 @@
   <p>Hello <%= current_user.first_name %></p>
 </div>
 <div>
-  <p>First name: <%= current_user.first_name%></p>
-  <p>Last name: <%= current_user.last_name%></p>
-  <p>E-Mail: <%= current_user.email%></p>
+  <p><%= link_to "My profile", profile_path %></p>
+  <p><%= link_to "About us", about_path %></p>
+  <p><%= link_to "Contact us", contact_path %></p>
+  <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
 </div>
 
 <div>
