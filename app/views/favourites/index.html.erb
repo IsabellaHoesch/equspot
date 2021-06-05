@@ -1,13 +1,14 @@
-<h2>Your favourites</h2>
-
-<ul>
-  <% @favourites.each do |favourite| %>
-    <li>
-      <%= link_to (favourite.place).name, place_path(favourite.place) %>
-      <%= link_to "Remove",
-              favourite_path(favourite),
-              method: :delete,
-              data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %>
-    </li>
-  <% end %>
-</ul>
+<div class="container m-4">
+  <h3>Your favourites</h3>
+  <ul>
+    <% @favourites.each do |favourite| %>
+      <li>
+        <%= link_to (favourite.place).name, place_path(favourite.place) %>
+        <%= link_to "🗑️",
+                favourite_path(favourite),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

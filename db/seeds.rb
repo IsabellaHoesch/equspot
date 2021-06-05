@@ -113,3 +113,6 @@ surf3.sport_types.push(SportType.find_by(name: "Surf"))
 surf3.save
 
 puts "3 Surf entries seeded"
+
+
+# add reviews, signups, messages
