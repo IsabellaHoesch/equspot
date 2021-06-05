@@ -22,39 +22,36 @@
     <p>Your reviews</p>
     <ul>
       <% @user.reviews.each do |review| %>
-      <li class="list-group-item"><%= review.content %> <%= link_to 'X',
+      <li class="list-group-item"><%= review.content %> <%= link_to '🗑️',
           review_path(review),
           method: :delete,
-          data: { confirm: "Are you sure?" }, class: 'btn btn-primary' %></li>
+          data: { confirm: "Are you sure?" }%></li>
     <% end %>
     </ul>
   </div>
   <div class="mt-4">
-    <p>Your visits</p>
+    <p>Your activity</p>
   </div>
   <div>
     <ul>
     <% @user.visits.each do |visit| %>
-    <li class="list-group-item"><%= link_to visit.place.name, place_path(visit.place) %></li>
+    <li class="list-group-item"><%= visit.created_at.strftime("%m/%d/%Y")%>: <%= link_to visit.place.name, place_path(visit.place) %></li>
     <% end %>
     </ul>
   </div>
-</div>
 
-<div>
-  <p>Hello <%= current_user.first_name %></p>
-</div>
-<div>
-  <p><%= link_to "My profile", profile_path %></p>
-  <p><%= link_to "About us", about_path %></p>
-  <p><%= link_to "Contact us", contact_path %></p>
-  <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
-</div>
+  <div>
+    <p><%= link_to "My profile", profile_path %></p>
+    <p><%= link_to "About us", about_path %></p>
+    <p><%= link_to "Contact us", contact_path %></p>
+    <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
+  </div>
 
-<div>
-<h3>Join chatrooms</h3>
-<% @sporttypes.each do |sport| %>
-  <%= link_to sport.name, chatroom_path(sport.chatroom), class: "button btn btn-primary mt-1 w-100" %>
-  <% end %>
+  <div>
+  <h3>Join chatrooms</h3>
+  <% @sporttypes.each do |sport| %>
+    <%= link_to sport.name, chatroom_path(sport.chatroom), class: "button btn btn-primary mt-1 w-100" %>
+    <% end %>
+  </div>
 </div>
 
