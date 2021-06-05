@@ -12,7 +12,7 @@ class FavouritesController < ApplicationController
     @favourite.place = @place
     authorize @favourite
     if @favourite.save
-      redirect_to places_path, notice: "Added to the fav."
+      redirect_to places_path, notice: "Added to favourites"
     else
       render "places/show"
     end

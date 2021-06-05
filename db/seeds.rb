@@ -97,7 +97,7 @@ puts "#{count} Calisthetics entries seeded"
 
 
 # create places: surf
-surf1 = Place.new(name: "Eisbachwelle", address: "Prinzregentenstraße, 80538 München", description: "Risk of injury is high due to cemented stones in water.", user: isa)
+surf1 = Place.new(name: "Eisbachwelle", address: "Prinzregentenstraße, 80538 München", description: "Risk of injury is high due to cemented rocks in water.", user: isa)
 surf1.photos.attach(io: URI.open("https://cdn.muenchen-p.de/.imaging/stk/responsive/image980/dms/fg-2018/outdoor-sport/isarsurferin-hp/document/isarsurferin-hp.jpg"), filename: 'surf1.png', content_type: 'image/png')
 surf1.sport_types.push(SportType.find_by(name: "Surf"))
 surf1.save
@@ -107,7 +107,7 @@ surf2.photos.attach(io: URI.open("https://www.igsm.info/wp-content/uploads/2015/
 surf2.sport_types.push(SportType.find_by(name: "Surf"))
 surf2.save
 
-surf3 = Place.new(name: "Floßlände", address: "Floßlände, Munich", description: "Great for beginners. You can surf here from MAy to October.", user: isa)
+surf3 = Place.new(name: "Floßlände", address: "Floßlände, Munich", description: "Great for beginners. You can surf here from May to October.", user: isa)
 surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326/1200x675?v=1591172107"), filename: 'surf3.png', content_type: 'image/png')
 surf3.sport_types.push(SportType.find_by(name: "Surf"))
 surf3.save
