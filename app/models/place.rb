@@ -2,9 +2,7 @@ class Place < ApplicationRecord
   belongs_to :user
   has_many :visits, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :likes, dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :comments, dependent: :destroy
   has_many :sport_combinations, dependent: :destroy
   has_many :sport_types, through: :sport_combinations
   has_many_attached :photos
