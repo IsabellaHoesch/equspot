@@ -33,8 +33,8 @@
 
   <div class="flex-center mt-4">
     <div class="counter">
-      <span><%= @visits_count %></span>
-      <p>people have visited <%= @place.name %> in the past <%=time_ago_in_words(180.minutes.ago) %></p>
+      <span><%= @visits_count %> people in the past <%=time_ago_in_words(180.minutes.ago) %></span>
+      <br>
       <%= link_to 'Check-In', place_visits_path(@place), method: :post%>
     </div>
   </div>
