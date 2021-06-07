@@ -10,11 +10,8 @@
     <div>
       <%= form_tag places_path, method: :get do %>
       <%= text_field_tag :query, params[:query],
-      placeholder: "Search by name" %>
+      placeholder: "Search by location" %>
     </div>
-  </form>
-
-  <form>
     <div class="form-row mt-2">
       <div class="col">  
        <%= collection_select :sport, :id, @dropdown, :id, :name, include_blank: true %>

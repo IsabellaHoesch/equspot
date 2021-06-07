@@ -2,7 +2,8 @@
 require 'nokogiri'
 require 'open-uri'
 
-n = 0..5
+num = 5
+n = 0..num
 
 SportCombination.destroy_all
 Message.destroy_all
@@ -27,6 +28,26 @@ arko = User.create(email: "arko@hotmail.com", password: "1234567", first_name: "
 isa = User.create(email: "isa@hotmail.com", password: "1234567", first_name: "Isabella", last_name: "Hoesch")
 tea = User.create(email: "tea@hotmail.com", password: "1234567", first_name: "Tea", last_name: "Filipovic")
 andrea = User.create(email: "andrea@hotmail.com", password: "1234567", first_name: "Andrea", last_name: "Furthmair")
+
+# calisthetics
+count = 0
+CSV.foreach("db/calisthetics.csv") do |row|
+  if count <= num
+    foto = "https://www.hall-of-sports.de/wp-content/uploads/2018/08/E3A1715-1030x686.jpg" #row[0]
+    name = row[1]
+    address = row[2]
+    puts "foto: #{foto}"
+    puts "name: #{name}"
+    puts "address: #{address}"
+
+    place = Place.new(name: name, address:address, description: "Missing description", user: tea)
+    place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.jpg", content_type: 'image/png')
+    place.sport_types.push(SportType.find_by(name: "Calisthetics"))
+    place.save
+    count += 1
+  end
+end
+puts "#{count} Calisthetics entries seeded"
 
 
 # create places: ping-pong
@@ -56,43 +77,13 @@ elements[n].each_with_index do |e, i|
   address =  e.text.strip
   address.sub! 'Munich', ' Munich'
   photo = "https://www.courtsoftheworld.com#{doc.css('div.owl-slide-parent a').map { |link| link['href'] }[i]}"
-  p = Place.create(name: "Basketball #{i}", address: address, description: "", user: isa)
+  p = Place.create(name: "Basketball #{i}", address: address, description: "Missing description", user: isa)
   p.photos.attach(io: URI.open(photo), filename: "#{count}.png", content_type: 'image/png')
   p.sport_types.push(SportType.find_by(name: "Basketball"))
   p.save
   count += 1
 end
 puts "#{count} Basketball entries seeded"
-
-# calisthetics 
-calist = [
-  "7059-en-munich-outdoor-gym-schwabing-west-ackermannbogen", "4375-en-munchen-calisthenics-equipment-olympiapark-playparc",
-  "15582-en-outdoor-fitness-park-munich-bewegungspark-4f-circle-schwabing", "5264-en-munich-outdoor-pull-up-bars-christoph-von-gluck-platz",
-  "84-en-calisthenics-street-workout-park-korbinianplatz-munich", "155-en-parkourpark-rote-stadt-munich",
-  "6327-en-munich-outdoor-pull-up-bars-au-haidhausen", "1768-en-4fcircle-munich-moosach-outdoor-gym",
-  "6326-en-munich-outdoor-fitness-station-schulsportanlage-an-der-schulstrasse", "16251-en-fitness-facility-munich-fitness-station-hypopark",
-  "144-en-outdoor-fitnesspark-at-isarauen-munich", "4586-en-munich-parkour-park-ludwig-thoma-realschule",
-  "6823-en-munich-calisthenics-park-stiftsbogen-hadern", "145-en-workout-park-at-munich-sudpark",
-  "1760-en-fitness-trail-perlacher-forst-munich-outdoor-gym", "16632-en-outdoor-pull-up-bars-munich-outdoor-klimmzugstange-munchen",
-  "10043-en-outdoor-pull-up-bars-munich-calisthenics-gym-obersendling", "16954-en-fitness-trail-munich-outdoor-fitness-sportanlage-an-der-wurm",
-  "3007-en-munich-messestadt-riem-calisthenics-gerate-playparc-riemer-park", "1132-en-munich-outdoor-fitness-gym-fuerstenried",
-  "8423-en-exercise-park-munich-outdoor-fitness-munchen-neuaubing-sportplatz", "838-en-parkour-park-munich-germering-harthaus-workout-spot",
-  "5708-en-munich-outdoor-fitness-station-zugspitzstrasse-grunwald", "5183-en-munich-outdoor-fitness-trail-grunwalder-forst"
-]
-
-count = 0
-calist[n].each do |cal|
-  doc = Nokogiri::HTML(URI.open("https://calisthenics-parks.com/spots/#{cal}").read)
-  foto = doc.at_css('#links > a > img').attr('src')
-  name = doc.search('#well > h1').text.strip
-  address = doc.xpath('//*[@id="content-l-container"]/address/text()').text.strip
-  place = Place.new(name: "#{name}", address:address, description: "", user: tea)
-  place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.png", content_type: 'image/png')
-  place.sport_types.push(SportType.find_by(name: "Calisthetics"))
-  place.save
-  count += 1
-end
-puts "#{count} Calisthetics entries seeded"
 
 
 # create places: surf
@@ -114,4 +105,4 @@ surf3.save
 puts "3 Surf entries seeded"
 
 
-# add reviews, signups, messages
+#add reviews, signups, messages
