@@ -1,23 +1,24 @@
 
 <div class="container p-3 mt-2">
 
-  <div class="d-flex">
-    <p>Welcome <%= @user.first_name %></p>
+  <div class="d-flex" id="welcome">
+    <h5>Welcome <%= @user.first_name %>!</h5>
   </div>
 
-  <div class="d-flex justify-content-between p-2 mt-3">
+  <div class="d-flex justify-content-between pr-3 mt-3">
     <div>
-      <img src="basketball.png" class="card-trip-user avatar-bordered">
+      <i class="fas fa-user-circle fa-3x"></i>
     </div>
-    <div>
-      <p>Check ins</p>
-      <span><%= current_user.visits.count %></span>
+    <div id="profile-top">
+      <p><strong>Check ins</strong></p>
+      <span><strong><%= current_user.visits.count %></strong></span>
     </div>
-    <div>
-      <p><%= link_to 'Favourites', favourites_path %></p>
-      <span><%= current_user.favourites.count %></span>
+    <div id="profile-top">
+      <p><strong><%= link_to 'Favourites', favourites_path %></strong></p>
+      <span><strong><%= current_user.favourites.count %></strong></span>
     </div>
   </div>
+
   <div class="mt-3">
     <p>Your reviews</p>
     <ul>
@@ -53,5 +54,6 @@
     <%= link_to sport.name, chatroom_path(sport.chatroom), class: "button btn btn-primary mt-1 w-100" %>
     <% end %>
   </div>
+
 </div>
 
