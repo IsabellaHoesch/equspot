@@ -1,6 +1,7 @@
 
 require 'nokogiri'
 require 'open-uri'
+require 'csv'
 
 calist = [
   "7059-en-munich-outdoor-gym-schwabing-west-ackermannbogen",
@@ -30,16 +31,20 @@ calist = [
 ]
 
 
-
 count = 0
-# calist.each do |cal|
-#   doc = Nokogiri::HTML(URI.open("https://calisthenics-parks.com/spots/#{cal}").read)
-#   foto = doc.at_css('#links > a > img').attr('src')
-#   name = doc.search('#well > h1').text.strip
-#   address = doc.xpath('//*[@id="content-l-container"]/address/text()').text.strip
-#   place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.png", content_type: 'image/png')
-#   place.sport_types.push(SportType.where(name: "Calisthetics"))
-#   place.save
-#   count += 1
-# end
-# puts "#{count} Calisthetics entries seeded"
+
+CSV.open("calisthetics.csv", "w") do |csv|
+  calist.each do |cal|
+    doc = Nokogiri::HTML(URI.open("https://calisthenics-parks.com/spots/#{cal}").read)
+    foto = doc.at_css('#links > a > img').attr('src')
+    name = doc.search('#well > h1').text.strip
+    address = doc.xpath('//*[@id="content-l-container"]/address/text()').text.strip
+    csv << [foto, name, address]
+    puts "stored #{foto}, #{name}, #{address}."
+    count += 1
+    end
+end
+puts "#{count} Calisthetics entries stored"
+
+
+
