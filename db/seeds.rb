@@ -11,7 +11,6 @@ Place.destroy_all
 SportType.destroy_all
 User.destroy_all
 Review.destroy_all
-Comment.destroy_all
 Visit.destroy_all
 
 # create sport types and chatrooms
@@ -65,7 +64,7 @@ elements[n].each_with_index do |e, i|
 end
 puts "#{count} Basketball entries seeded"
 
-# calisthetics 
+# calisthetics
 calist = [
   "7059-en-munich-outdoor-gym-schwabing-west-ackermannbogen", "4375-en-munchen-calisthenics-equipment-olympiapark-playparc",
   "15582-en-outdoor-fitness-park-munich-bewegungspark-4f-circle-schwabing", "5264-en-munich-outdoor-pull-up-bars-christoph-von-gluck-platz",
