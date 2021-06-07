@@ -89,13 +89,26 @@ document.root.xpath('marker')[n].each do |pp|
   place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.png", content_type: 'image/png')
   place.sport_types.push(SportType.find_by(name: "Ping-Pong"))
   place.save
-  count += 1
-  # add some visits
-  [arko, isa, tea, andrea].sample do |user|
-    rand(0..2).times do
-      Visit.create(user: user, place: place)
+  # add visits
+  if count <= 2
+    month = 1
+    # day = 5
+    12.times do
+      rand(2..6).times do
+        Visit.create(user: tea, place: place, created_at: DateTime.new(2020,month,3,4,5,6))
+      end
+      month += 1
     end
+    month = 1
+    6.times do 
+      rand(0..5).times do
+        Visit.create(user: tea, place: place, created_at: DateTime.new(2021,month,3,4,5,6))
+      end
+      month += 1
+    end
+    # day += 7
   end
+  count += 1
 end
 puts "#{count} Ping-Pong entries seeded"
 
