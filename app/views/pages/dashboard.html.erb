@@ -31,15 +31,19 @@
     </ul>
   </div>
   <div class="mt-4">
-    <p>Your activity</p>
-  </div>
-  <div>
+    <p>Your last 3 activities</p>
     <ul>
-    <% @user.visits.each do |visit| %>
-    <li class="list-group-item"><%= visit.created_at.strftime("%m/%d/%Y")%>: <%= link_to visit.place.name, place_path(visit.place) %></li>
+    <% @user.visits.last(3).each do |visit| %>
+    <p><%= visit.created_at.strftime("%m/%d/%Y")%>: <%= link_to visit.place.name, place_path(visit.place) %></p>
     <% end %>
     </ul>
   </div>
+
+  <%= line_chart @user.visits.group_by_month(:created_at).count, width: "200px", height: "100px", colors: ["#2B5D6C"], points: false%> 
+  <p>Places you have visited</p>
+  <%= pie_chart @user.sport_types.group(:name).count  %> 
+ 	<p>Most frequent activity</p>
+  <%= bar_chart @user.sport_types.group(:name).count %> 
 
   <div>
     <p><%= link_to "My profile", profile_path %></p>
