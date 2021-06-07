@@ -5,7 +5,7 @@
 @import "map";
 
 #background_index {
-    background-color: #2B5D6C; 
+    background-color: #2B5D6C;
 }
 
 input[type=text] {
@@ -20,6 +20,7 @@ input[type=text] {
 #sport_id {
   height: 100%;
   width: 100%;
+
   background-color: #F4F4F4;
   color: #488496;
   border: none;
@@ -33,4 +34,5 @@ input[type=text] {
 .fa-plus-square {
   color: rgb(245, 244, 244);
   text-shadow: 3px 3px 3px rgba(0,0,0,.2)
+
 }
