@@ -1,19 +1,32 @@
 <body id="background-favourites">
-  <div class="container m-4">
-    <h5>
+  <div class="container">
+
+    <h5 id="favourite-title">
       <span id="banner-typed-text"></span>
     </h5>
 
-    <ul>
-      <% @favourites.each do |favourite| %>
-        <li>
-          <%= link_to (favourite.place).name, place_path(favourite.place) %>
-          <%= link_to "🗑️",
-                  favourite_path(favourite),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-        </li>
+  <% @favourites.each do |favourite| %>
+    <div class="card-trip">
+
+      <% if (favourite.place).photos.attached? %>
+        <%= cl_image_tag (favourite.place).photos.first.key, crop: :fit %>
+      <% else %> 
+        <%= image_tag 'sports_img.jpg', crop: :fill %>
       <% end %>
-    </ul>
+      
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= link_to (favourite.place).name, place_path(favourite.place) %></h2>
+          <p><strong><%= (favourite.place).address %></strong></p>
+        </div>
+           <%= link_to favourite_path(favourite),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } do %>
+         <i class="fas fa-trash-alt"></i>
+         <% end %>
+      </div>
+    </div>
+    <% end %>
+
   </div>  
-</div>
+</body>
