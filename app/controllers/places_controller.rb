@@ -24,7 +24,6 @@ class PlacesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         info_window: render_to_string(partial: "info_window", locals: { place: place }),
-
         image_url: helpers.asset_url("#{place.sport_types.first.name}.png")
       }
     end
@@ -37,7 +36,8 @@ class PlacesController < ApplicationController
     @markers = [{
         lat: @place.latitude,
         lng: @place.longitude,
-        image_url: helpers.asset_url('Surf.png')
+        info_window: render_to_string(partial: "address_window", locals: { place: @place }),
+        image_url: helpers.asset_url("basketball.png")
       }]
   end
 
