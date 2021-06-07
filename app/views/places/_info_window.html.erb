@@ -1,9 +1,5 @@
-<div>
-  <div>
-    <%= cl_image_tag place.photos.first.key, height: 200, width: 200, crop: :fit %>
-  </div>
-  <div class="text-center justify-content-center text-capitalize pt-3">
-    <h6><%= link_to place.name, place_path(place) %></h6>
-    <p><%= place.address %></p>
-  </div>
+<div class="text-left text-capitalize mt-2">
+  <h6><%= link_to place.name, place_path(place) %></h6>
+  <p><%= place.address %></p>
 </div>
+
