@@ -33,7 +33,7 @@ andrea = User.create(email: "andrea@hotmail.com", password: "1234567", first_nam
 count = 0
 CSV.foreach("db/calisthetics.csv") do |row|
   if count <= num
-    foto = row[0]
+    foto = "https://www.hall-of-sports.de/wp-content/uploads/2018/08/E3A1715-1030x686.jpg" #row[0]
     name = row[1]
     address = row[2]
     puts "foto: #{foto}"
@@ -41,7 +41,7 @@ CSV.foreach("db/calisthetics.csv") do |row|
     puts "address: #{address}"
 
     place = Place.new(name: name, address:address, description: "Missing description", user: tea)
-    place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.png", content_type: 'image/png')
+    place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.jpg", content_type: 'image/png')
     place.sport_types.push(SportType.find_by(name: "Calisthetics"))
     place.save
     count += 1
