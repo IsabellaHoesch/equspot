@@ -22,6 +22,7 @@
     <h2><%= @place.name %></h2>
     <p><%= @place.address %></p>
     <p><%= @place.description %></p>
+    <p><%= Review.average(:rating) %></p>
 
   </div>
 
@@ -31,6 +32,17 @@
 
   <p><%= link_to 'Leave a review', new_place_review_path(@place) %></p>
 
+  <div>
+    <h2>Reviews</h2>
+    <ul>
+      <% @place.reviews.order(created_at: :desc).limit(3).each do |review| %>
+        <li><%= review.content %></li>
+      <% end %>
+    </ul>
+
+
+  </div>
+
   <div class="flex-center mt-4">
     <div class="counter">
       <span><%= @visits_count %> people in the past <%=time_ago_in_words(180.minutes.ago) %></span>
@@ -39,8 +51,8 @@
     </div>
   </div>
 
+
     <%= link_to 'Add to favourites', place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } %>
-    <%  %>
     <%= link_to "Chat", chatroom_path(@place.sport_types.first.chatroom), class: "button btn btn-primary mt-1 w-100" %>
   </div>
 </div>
