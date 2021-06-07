@@ -35,6 +35,11 @@ class PlacesController < ApplicationController
     set_place
     @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
     authorize @place
+    @markers = [{
+        lat: @place.latitude,
+        lng: @place.longitude,
+        image_url: helpers.asset_url('Surf.png')
+      }]
   end
 
   def new
