@@ -47,6 +47,7 @@ surf2 = Place.new(name: "E2/Dianabadschwelle", address: "Himmelreichstraße, 805
 surf2.photos.attach(io: URI.open("https://www.igsm.info/wp-content/uploads/2015/08/Dianabadschwelle.jpg"), filename: 'surf2.png', content_type: 'image/png')
 surf2.sport_types.push(SportType.find_by(name: "Surf"))
 surf2.save
+Visit.create(user: tea, place: surf2, created_at: DateTime.new(2021,7,6,4,5,6))
 
 surf3 = Place.new(name: "Floßlände", address: "Floßlände, Munich", description: "Great for beginners. You can surf here from May to October.", user: isa)
 surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326/1200x675?v=1591172107"), filename: 'surf3.png', content_type: 'image/png')
@@ -67,11 +68,16 @@ CSV.foreach("db/calisthetics.csv") do |row|
     place.save
     count += 1
     # add some visits
-    [arko, isa, tea, andrea].sample do |user|
+    [arko, isa, andrea].sample do |user|
       rand(0..2).times do
         Visit.create(user: user, place: place)
       end
     end
+    # add some visits for Tea!
+    rand(2..4).times do
+      Visit.create(user: tea, place: place)
+    end
+
   end
 end
 puts "#{count} Calisthetics entries seeded"
@@ -103,6 +109,7 @@ document.root.xpath('marker')[n].each do |pp|
     6.times do 
       rand(0..5).times do
         Visit.create(user: tea, place: place, created_at: DateTime.new(2021,month,3,4,5,6))
+        Visit.create(user: isa, place: place, created_at: DateTime.new(2021,month,6,4,5,6))
       end
       month += 1
     end
@@ -138,6 +145,10 @@ end
 puts "#{count} Basketball entries seeded"
 
 
-
-
+# busy spot for demo
+full_spot = "Ping-Pong table 504"
+Visit.create(user: andrea, place: find_by(name: ), created_at: DateTime.new(2021,7,11,16,5,6))
+Visit.create(user: isa, place: find_by(name: full_spot), created_at: DateTime.new(2021,7,11,16,5,6))
+Visit.create(user: armen, place: find_by(name: full_spot), created_at: DateTime.new(2021,7,11,16,5,6))
+Visit.create(user: andrea, place: find_by(name: full_spot), created_at: DateTime.new(2021,7,11,16,5,6))
 
