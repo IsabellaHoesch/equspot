@@ -1,14 +1,19 @@
-<div class="container m-4">
-  <h3>Your favourites</h3>
-  <ul>
-    <% @favourites.each do |favourite| %>
-      <li>
-        <%= link_to (favourite.place).name, place_path(favourite.place) %>
-        <%= link_to "🗑️",
-                favourite_path(favourite),
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-      </li>
-    <% end %>
-  </ul>
+<body id="background-favourites">
+  <div class="container m-4">
+    <h5>
+      <span id="banner-typed-text"></span>
+    </h5>
+
+    <ul>
+      <% @favourites.each do |favourite| %>
+        <li>
+          <%= link_to (favourite.place).name, place_path(favourite.place) %>
+          <%= link_to "🗑️",
+                  favourite_path(favourite),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>  
 </div>
