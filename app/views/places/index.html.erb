@@ -13,22 +13,22 @@
       placeholder: "Search by location" %>
     </div>
     <div class="form-row mt-2">
-      <div class="col">  
+      <div class="col">
        <%= collection_select :sport, :id, @dropdown, :id, :name, include_blank: true %>
-     </div> 
-     
+     </div>
+
      <div class="col">
        <%= submit_tag "Search by sport", class: "btn btn-success w-100" %>
      </div>
-     </div> 
+     </div>
   </form>
   <% end %>
 
-  <% @places.each do |place| %> 
+  <% @places.each do |place| %>
     <div class="card-trip">
       <% if place.photos.attached? %>
         <%= cl_image_tag place.photos.first.key, crop: :fit %>
-      <% else %> 
+      <% else %>
         <%= image_tag 'sports_img.jpg', crop: :fill %>
       <% end %>
       <div class="card-trip-infos">
@@ -37,11 +37,13 @@
           <p><strong><%= place.address %></strong></p>
           <p><%= place.description %></p>
         </div>
-          <i class="fas fa-crown"></i>
+        <%= link_to place_favourites_path(place), method: :post, params: { "favourite[place_id]" => place.id } do %>
+        <i class="fas fa-crown"></i>
+        <% end %>
       </div>
     </div>
     <% end %>
-      
+
 
 
     <%= link_to "Add a place", new_place_path %>
