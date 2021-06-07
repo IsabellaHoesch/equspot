@@ -54,7 +54,7 @@
 
     <div class="mt-4">
       <h5>Recent comments</h5>
-        <% @place.reviews.each do |review| %>
+        <% @place.reviews.order(created_at: :desc).limit(3).each do |review| %>
           <div class="d-flex justify-content-between">
             <p class="dashboard-item mt-2"><%= review.content %>
             <% review.rating.times do %>
@@ -73,7 +73,7 @@
     <div class="mb-4">
       <p>just some space</p>
     </div>
-
+  
   </div>
 </div>
 
