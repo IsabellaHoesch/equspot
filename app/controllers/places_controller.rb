@@ -5,7 +5,6 @@ class PlacesController < ApplicationController
   def index
     @places = policy_scope(Place)
 
-
     # search bar - by sport
     @dropdown = SportType.all
     if params[:query].present? && params[:sport][:id].present?
