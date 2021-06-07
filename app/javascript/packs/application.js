@@ -40,4 +40,11 @@ document.addEventListener('turbolinks:load', () => {
   weatherApi();
 });
 
+import { loadDynamicBannerText } from '../components/banner';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
 

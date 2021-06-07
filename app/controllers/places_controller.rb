@@ -5,16 +5,15 @@ class PlacesController < ApplicationController
   def index
     @places = policy_scope(Place)
 
-
     # search bar - by sport
     @dropdown = SportType.all
     if params[:query].present? && params[:sport][:id].present?
-      @places = Place.joins(:sport_combinations).where("places.name ILIKE ? AND sport_combinations.sport_type_id = ?", "%#{params[:query]}%", params[:sport][:id].to_i)
+      @places = Place.joins(:sport_combinations).where("places.address ILIKE ? AND sport_combinations.sport_type_id = ?", "%#{params[:query]}%", params[:sport][:id].to_i)
     elsif params[:sport].present? && !params[:sport][:id].blank?
       sql_query = "sport_types.id = :sport"
       @places = Place.joins(:sport_types).where(sql_query, sport: params[:sport][:id].to_i)
     elsif params[:query].present? && params[:sport][:id].blank?
-      sql_query = "name ILIKE :query"
+      sql_query = "address ILIKE :query"
       @places = Place.where(sql_query, query: "%#{params[:query]}%")
     else
       @places = Place.all
@@ -79,6 +78,6 @@ class PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :address, :description, :rating, photos: [])
+    params.require(:place).permit(:name, :address, :description, photos: [])
   end
 end

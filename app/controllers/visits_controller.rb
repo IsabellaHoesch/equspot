@@ -18,7 +18,7 @@ class VisitsController < ApplicationController
     authorize @visit
 
     if @visit.save
-      redirect_to place_path(@place), notice: "You are checked-in"
+      redirect_to place_path(@place), notice: "You are checked-in."
     else
       render "places/show"
     end

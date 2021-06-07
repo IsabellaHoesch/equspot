@@ -12,9 +12,10 @@ class FavouritesController < ApplicationController
     @favourite.place = @place
     authorize @favourite
     if @favourite.save
-      redirect_to place_path(@place), notice: "Added to favourites" 
+      redirect_to favourites_path, notice: "Added to favourites."
     else
-      render "places/show"
+      # render "places/show"
+      redirect_to favourites_path, notice: "Already on the list."
     end
   end
 
@@ -22,7 +23,7 @@ class FavouritesController < ApplicationController
     @favourite = Favourite.find(params[:id])
     authorize @favourite
     @favourite.destroy
-    redirect_to favourites_path
+    redirect_to favourites_path, notice: "Succesfully removed."
   end
 
   private
