@@ -1,8 +1,20 @@
 class FavouritesController < ApplicationController
   def index
     # @place = Place.find(params[:place_id])
-    @favourites = policy_scope(Favourite)
+    @favourites = current_user.favourites
+    @surf = SportType.find_by(name: "Surf")
+    @basketball = SportType.find_by(name: "Basketball")
+    @calisthetics = SportType.find_by(name: "Calisthetics")
+    @ping_pong = SportType.find_by(name: "Ping-Pong")
   end
+   
+  def show
+    @surf = SportType.find_by(name: "Surf")
+    @basketball = SportType.find_by(name: "Basketball")
+    @calisthetics = SportType.find_by(name: "Calisthetics")
+    @ping_pong = SportType.find_by(name: "Ping-Pong")
+  end  
+
 
   def create
     @user = current_user

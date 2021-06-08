@@ -1,33 +1,71 @@
-<body id="background-favourites">
   <div class="container">
-
     <h5 id="favourite-title">
       <span id="banner-typed-text"></span>
     </h5>
+  <div id="chat-section-favourites">
+    <p>💬 Join one of the chat rooms:</p>
 
-  <% @favourites.each do |favourite| %>
-    <div class="card-trip">
-
-      <% if (favourite.place).photos.attached? %>
-        <%= cl_image_tag (favourite.place).photos.first.key, crop: :fit %>
-      <% else %> 
-        <%= image_tag 'sports_img.jpg', crop: :fill %>
-      <% end %>
-      
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= link_to (favourite.place).name, place_path(favourite.place) %></h2>
-          <p><strong><%= (favourite.place).address %></strong></p>
+      <div id="chat-icons">
+        <div id="chat-icon">
+            <%= link_to chatroom_path(@basketball.chatroom) do %>
+            <i class="fas fa-basketball-ball fa-2x"></i>
+            <p>basketball<p>
+          <% end %> 
         </div>
-           <%= link_to favourite_path(favourite),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } do %>
-         <i class="fas fa-trash-alt"></i>
-         <% end %>
+
+        <div id="chat-icon">
+            <%= link_to chatroom_path(@ping_pong.chatroom) do %>
+            <i class="fas fa-table-tennis fa-2x"></i>
+            <p>ping-pong<p>
+          <% end %> 
+        </div>
+
+        <div id="chat-icon">
+            <%= link_to chatroom_path(@calisthetics.chatroom) do %>
+            <i class="fas fa-dumbbell fa-2x"></i>
+            <p>calisthetics<p>
+          <% end %> 
+        </div>
+
+        <div id="chat-icon">
+            <%= link_to chatroom_path(@surf.chatroom) do %>
+            <i class="fas fa-snowboarding fa-2x"></i>
+            <p>surfing<p>
+          <% end %> 
+        </div>
+      </div> 
+    </div>   
+  </div>  
+  
+  <div id="background-favourites-cards">
+  <div class="container">
+
+    <h5 id="favourite-title2">Your favourite places</h5>
+
+    <% @favourites.each do |favourite| %>
+      <div class="card-trip">
+
+        <% if (favourite.place).photos.attached? %>
+          <%= cl_image_tag (favourite.place).photos.first.key, crop: :fit %>
+        <% else %> 
+          <%= image_tag 'sports_img.jpg', crop: :fill %>
+        <% end %>
+        
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to (favourite.place).name, place_path(favourite.place) %></h2>
+            <p><strong><%= (favourite.place).address %></strong></p>
+          </div>
+            <%= link_to favourite_path(favourite),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash-alt"></i>
+          <% end %>
+
+        </div>
       </div>
     </div>
     <% end %>
-
-
-  </div>  
+  </div>
 </body>
+
