@@ -34,7 +34,6 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { weatherApi } from '../plugins/init_weather';
 import { initStarRating } from '../plugins/init_star_rating';
 
-
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initStarRating();

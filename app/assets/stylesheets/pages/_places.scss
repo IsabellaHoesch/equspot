@@ -8,7 +8,7 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   margin: 0px 0px;
   // height: 140px;
-  left: 20px;
+  left: 21px;
   width: 90%;
   top: 300px;
   background-color: white;
@@ -48,9 +48,25 @@
   height: 40px;
 }
 
+#show-flex {
+  background-color: white;
+}
+
+#show-rating {
+  width: 100%;
+  padding: 2px 2px;
+  vertical-align: center;
+}
+
+#show-bucket {
+  text-align: right;
+  padding: 2px 2px;
+}
+
 .parent-show-2 {
   position: absolute;
   padding: 5px 5px;
   width: 90%;
-  top: 440px;
+  top: 470px;
+  left: 22px;
 }

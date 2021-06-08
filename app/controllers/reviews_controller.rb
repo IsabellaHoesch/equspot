@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = @user
     @review.place = @place
+    @review.rating = 0 if params[:review][:rating].empty?
     authorize @review
     if @review.save
       redirect_to place_path(@place), notice: "Comment added."
