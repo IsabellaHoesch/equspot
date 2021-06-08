@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review.place = @place
     authorize @review
     if @review.save
-      redirect_to place_path(@place), notice: "Review added."
+      redirect_to place_path(@place), notice: "Comment added."
     else
       render "places/show"
     end
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     authorize @review
     @review.destroy
-    redirect_to place_path(@review.place), notice: "Review deleted."
+    redirect_to place_path(@review.place), notice: "Comment deleted."
   end
 
   private
