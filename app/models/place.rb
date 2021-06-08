@@ -6,8 +6,8 @@ class Place < ApplicationRecord
   has_many :sport_combinations, dependent: :destroy
   has_many :sport_types, through: :sport_combinations
   has_many_attached :photos
-  validates :name, presence: true, uniqueness: true
-  # validates :description, presence: true, length: { minimum: 10, message: "Description has to be at least 10 characters" }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 30, message: "no longer than 30 characters." }
+  validates :description, presence: true, length: { maximum: 250, message: "no longer than 250 characters." }
   validates :address, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

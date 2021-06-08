@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', () => {
     $(".alert.alert-info").fadeTo(500,0,function(){
         $(this).remove()
         })
-    },4000)
+    },2500)
 });
 
 import { loadDynamicBannerText } from '../components/banner';

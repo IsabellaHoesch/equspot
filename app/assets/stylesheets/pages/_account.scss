@@ -1,0 +1,31 @@
+#show-rating-2x {
+  background-color: #f4f4f4;
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+
+}
+
+#messages-bordered-a {
+  border-radius: 4px;
+  background: #f4f4f4;
+  height: 100%;
+  box-shadow:  7px 7px 14px #d2d2d2,
+                 -7px -7px 14px #ffffff;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+#messages-bordered-b {
+  border-radius: 5px;
+  background: #f4f4f4;
+  height: 100%;
+  box-shadow:  1px 1px 14px #d2d2d2,
+                 -7px -7px 14px #ffffff;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.align-middle{
+  vertical-align: middle;
+}
