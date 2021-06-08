@@ -37,7 +37,7 @@ class PlacesController < ApplicationController
         lat: @place.latitude,
         lng: @place.longitude,
         info_window: render_to_string(partial: "address_window", locals: { place: @place }),
-        image_url: helpers.asset_url("basketball.png")
+        image_url: helpers.asset_url("#{@place.sport_types.first.name}.png")
       }]
   end
 
