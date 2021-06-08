@@ -7,6 +7,7 @@
       <%= f.input :description, as: :text, placeholder: 'Enter a short description of the spot', label:false %>
       <%= f.input :address, placeholder: 'Strasse 0, Munich', label:false %>
       <%= f.input :photos, as: :file, input_html: { multiple: true }, label:false %>
+      <%= f.association :sport_types, as: :check_boxes %>
     <div>
       <%= f.button :submit %>
     </div>
