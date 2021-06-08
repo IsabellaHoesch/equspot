@@ -35,12 +35,13 @@
     <% end %>
   </div>
 
-  
-  <p><strong>Most frequent activity</strong></p>
-  <%= bar_chart @user.sport_types.group(:name).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C"], legend: "bottom" %> 
- 	<p><strong>Your top 3 places</strong></p>
-  <%= pie_chart @user.places.group(:name).limit(3).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C", "#5db0ca"], legend: "bottom" %> 
-<br>
+  <div class="mt-4">
+    <p><strong>Most frequent activity</strong></p>
+    <%= bar_chart @user.sport_types.group(:name).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C"], legend: "bottom" %> 
+    <p><strong>Your top 3 places</strong></p>
+    <%= pie_chart @user.places.group(:name).limit(3).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C", "#5db0ca"], legend: "bottom" %> 
+    <br>
+  </div>
 </div>
 
   <div class="box-dark">
@@ -48,16 +49,13 @@
     <%= link_to "About us", about_path %> *
     <%= link_to "Contact equsport", contact_path %> 
     <br>
-    <p style= "text-align: right"><%= link_to "Log Out - FIX THIS", destroy_user_session_path, method: :delete %><i class="fas fa-sign-out-alt"></i></p>
-    
+    <p style= "text-align:center "> 
+      <%= link_to destroy_user_session_path, method: :delete do %> 
+        <i class="fas fa-sign-out-alt"></i> 
+       <% end %>  
+     </p>    
   </div>
 
-  <%# <div>
-  <h3>Join chatrooms</h3>
-  <% @sporttypes.each do |sport| %>
-    <%# <%= link_to sport.name, chatroom_path(sport.chatroom), class: "button btn btn-primary mt-1 w-100" %>
-    <%# <% end %> 
-  <%# </div> %> 
 
 
 
