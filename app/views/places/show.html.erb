@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="parent">
+  <div class="parent-show">
     <div id="carouselExampleControls" class="carousel slide mt-3" data-ride="carousel">
       <div class="carousel-inner">
         <% @place.photos.each_with_index do |photo, index| %>
@@ -29,12 +29,12 @@
     <div class="mt-1">
       <p><%= @place.description %></p>
     </div>
-    <div class="d-flex justify-content-end">
-      <p><%= link_to 'Check in', place_visits_path(@place), method: :post%></p>
+    <div class="d-flex justify-content-end p-1 mt-1">
+      <p><%= link_to 'Check in', place_visits_path(@place), class: "btn btn-outline-primary mt-1 w-100", method: :post%></p>
     </div>
   </div>
 
-  <div class="parent2">
+  <div class="parent-show-2">
     <div class="mt-4">
       <p id="weather" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>" data-name="<%= @place.name %>" data-apikey="<%=ENV['WEATHER_API_KEY']%>"></p>
     </div>
@@ -80,8 +80,3 @@
 
   </div>
 </div>
-
-
-
-
-
