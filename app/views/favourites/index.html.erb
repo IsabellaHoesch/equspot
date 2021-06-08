@@ -10,31 +10,19 @@
       <div id="chat-icons">
 
         <div id="chat-icon">
-            <%= link_to chatroom_path(@basketball.chatroom) do %>
-            <i class="fas fa-basketball-ball fa-2x"></i>
-            <p>basketball<p>
-          <% end %>
+          <%= render "chatroom_button", sport_type: @basketball %>
         </div>
 
         <div id="chat-icon">
-            <%= link_to chatroom_path(@ping_pong.chatroom) do %>
-            <i class="fas fa-table-tennis fa-2x"></i>
-            <p>ping-pong<p>
-          <% end %>
+          <%= render "chatroom_button", sport_type: @ping_pong %>
         </div>
 
         <div id="chat-icon">
-            <%= link_to chatroom_path(@calisthetics.chatroom) do %>
-            <i class="fas fa-dumbbell fa-2x"></i>
-            <p>calisthetics<p>
-          <% end %>
+          <%= render "chatroom_button", sport_type: @calisthetics %>
         </div>
 
         <div id="chat-icon">
-            <%= link_to chatroom_path(@surf.chatroom) do %>
-            <i class="fas fa-snowboarding fa-2x"></i>
-            <p>surfing<p>
-          <% end %>
+          <%= render "chatroom_button", sport_type: @surf %>
         </div>
       </div>
 

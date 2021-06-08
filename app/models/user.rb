@@ -13,4 +13,6 @@ class User < ApplicationRecord
   has_many :favourites, dependent: :destroy
 
   has_many :reviews, dependent: :destroy
+  has_many :chatroom_visits, dependent: :destroy
+
 end
