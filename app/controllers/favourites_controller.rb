@@ -7,13 +7,13 @@ class FavouritesController < ApplicationController
     @calisthetics = SportType.find_by(name: "Calisthetics")
     @ping_pong = SportType.find_by(name: "Ping-Pong")
   end
-   
+
   def show
     @surf = SportType.find_by(name: "Surf")
     @basketball = SportType.find_by(name: "Basketball")
     @calisthetics = SportType.find_by(name: "Calisthetics")
     @ping_pong = SportType.find_by(name: "Ping-Pong")
-  end  
+  end
 
 
   def create
@@ -24,10 +24,10 @@ class FavouritesController < ApplicationController
     @favourite.place = @place
     authorize @favourite
     if @favourite.save
-      redirect_to favourites_path, notice: "Added to favourites."
+      redirect_to place_path(@place), notice: "Added to favourites."
     else
       # render "places/show"
-      redirect_to favourites_path, notice: "Already on the list."
+      redirect_to place_path(@place), notice: "Already on the list."
     end
   end
 
