@@ -13,7 +13,8 @@ const initStarRating = () => {
       $(`#review-${id}`).barrating({
         theme: 'css-stars',
         readonly: true,
-        initialRating: value
+        initialRating: value,
+        allowEmpty: null
       });
     })
   }

@@ -2,6 +2,6 @@
       <%= simple_form_for([@place, @review], html: { class: "review_form" }) do |f| %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", id: 'review_rating' %>
-        <%= f.submit "Send your review", class: "btn-success" %>
+        <%= f.submit "Send your review", class: "btn-success " %>
       <% end %>
 </div>
