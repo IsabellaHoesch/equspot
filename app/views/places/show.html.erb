@@ -32,13 +32,14 @@
     <div class="mt-1">
       <p><%= @place.description %></p>
     </div>
-    <div class="d-flex justify-content-end p-1 mt-1">
+    <div class="d-flex justify-content-end pt-2 mr-2">
       <p><%= link_to 'Check in', place_visits_path(@place), class: "btn btn-outline-primary mt-1 w-100", method: :post%></p>
     </div>
   </div>
 
 
   <div class="parent-show-2">
+
     <div class="mt-4">
       <p id="weather" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>" data-name="<%= @place.name %>" data-apikey="<%=ENV['WEATHER_API_KEY']%>"></p>
     </div>
@@ -59,16 +60,26 @@
     <div class="mt-4">
       <h5>Recent comments</h5>
       <% @place.reviews.order(created_at: :desc).limit(3).each do |review| %>
-        <div class="d-flex justify-content-between">
-          <p class="dashboard-item mt-2"> <%= link_to '🗑️',
-          review_path(review),
-          method: :delete,
-          data: { confirm: "Are you sure?" }%>
-          <%= review.content %>
-          <% review.rating.times do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-          </p>
+        <div id="show-flex" class="d-flex flex-row justify-content-left align-items-center p-2 mt-2">
+          <div id="show-rating" class="mb-2">
+            <select data-rating= <%= review.rating %> data-id= <%= review.id %> name="" class="review-rating" id= <%= "review-#{review.id}" %> >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div id="show-rating">
+            <%= review.content %>
+          </div>
+          <div id="show-bucket" >
+            <%= link_to review_path(review),
+            method: :delete,
+            data: { confirm: "Are you sure?" } do %>
+            <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
