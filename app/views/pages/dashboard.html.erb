@@ -1,11 +1,11 @@
 
-<div class="container p-3 mt-2">
+<div class="container p-3 mt-4">
 
   <div class="d-flex" id="welcome">
     <h5>Welcome <%= @user.first_name %>!</h5>
   </div>
 
-  <div class="d-flex justify-content-between pr-3 mt-3">
+  <div class="d-flex justify-content-between pr-3 mt-4">
     <div>
       <i class="fas fa-user-circle fa-3x"></i>
     </div>
@@ -21,40 +21,39 @@
 
   <div class="mt-4">
     <p>You´ve had <strong><%= @visit_this_month %></strong>
-    activities this month. This is a change in activity of 
+    activities this month. This is a change in activity of
     <strong><%= @percentage_change_month %>%.</strong>
     <strong><%= @motivational_msg %></strong></p>
   </div>
 
 
-  <div class="mt-4">
+  <div class="mt-5">
     <p><strong>Your activities</strong></p>
-    <%= line_chart @user.visits.group_by_month(:created_at).count, width: "100%", height: "200px", colors: ["#2B5D6C"], points: false%> 
+    <%= line_chart @user.visits.group_by_month(:created_at).count, width: "100%", height: "200px", colors: ["#2B5D6C"], points: false%>
     <% @user.visits.last(1).each do |visit| %>
     <p><br><em>Last visit: <em><%= visit.created_at.strftime("%m/%d/%Y")%>: <%= link_to visit.place.name, place_path(visit.place) %></p>
     <% end %>
   </div>
 
-  <div class="mt-4">
+  <div class="mt-5">
     <p><strong>Most frequent activity</strong></p>
-    <%= bar_chart @user.sport_types.group(:name).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C"], legend: "bottom" %> 
+    <%= bar_chart @user.sport_types.group(:name).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C"], legend: "bottom" %>
+  </div>
+  <div class="mt-5">
     <p><strong>Your top 3 places</strong></p>
-    <%= pie_chart @user.places.group(:name).limit(3).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C", "#5db0ca"], legend: "bottom" %> 
+    <%= pie_chart @user.places.group(:name).limit(3).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C", "#5db0ca"], legend: "bottom" %>
     <br>
   </div>
 </div>
 
-  <div class="box-dark">
-    <p><%= link_to "Account information", profile_path %> *
-    <%= link_to "About us", about_path %> *
-    <%= link_to "Contact equsport", contact_path %> 
-    <br>
-    <p style= "text-align:center "> 
-      <%= link_to destroy_user_session_path, method: :delete do %> 
-        <i class="fas fa-sign-out-alt"></i> 
-       <% end %>  
-     </p>    
-  </div>
+<div class="d-flex justify-content-around box-dark pt-3 mt-3">
+  <p><%= link_to "Account", profile_path %> *
+  <%= link_to "About", about_path %> *
+  <%= link_to "Contact", contact_path %> *
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    <i class="fas fa-sign-out-alt"></i>
+  <% end %>
+</div>
 
 
 

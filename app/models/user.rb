@@ -11,6 +11,6 @@ class User < ApplicationRecord
   has_many :sport_combinations, through: :visited_places
   has_many :sport_types, through: :sport_combinations
   has_many :favourites, dependent: :destroy
-
+  has_many :messages, dependent: :destroy
   has_many :reviews, dependent: :destroy
 end

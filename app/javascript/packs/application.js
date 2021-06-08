@@ -39,6 +39,11 @@ document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initMapbox();
   weatherApi();
+  setTimeout(function(){
+    $(".alert.alert-info").fadeTo(500,0,function(){
+        $(this).remove()
+        })
+    },4000)
 });
 
 import { loadDynamicBannerText } from '../components/banner';
