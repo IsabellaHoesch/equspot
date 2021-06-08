@@ -26,7 +26,11 @@
       <%= link_to "Edit", edit_place_path(@place) %>
       <% end %>
       <%= link_to place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } do %>
-      <i class="fas fa-crown p-2"></i>
+        <% if current_user.favourites.find_by(place: @place).present? %>
+          <i class="fillcrown fas fa-crown p-2"></i>
+        <% else %>
+          <i class="emptycrown fas fa-crown p-2"></i>
+        <% end %>
       <% end %>
     </div>
     <div class="mt-1">
@@ -57,8 +61,10 @@
       <span><%= @busyness %></span>
     </div>
 
+
     <div class="mt-5">
-      <h5>Recent comments</h5>
+      <h5>Recent reviews</h5>
+
       <% @place.reviews.order(created_at: :desc).limit(3).each do |review| %>
         <div id="show-flex" class="d-flex flex-row justify-content-left align-items-center p-1 mt-3">
           <div id="show-rating" class="mb-2">
@@ -86,7 +92,7 @@
     </div>
 
     <div class="mt-3 mb-4">
-      <%= link_to 'Leave a comment', new_place_review_path(@place), class: "button btn btn-primary mt-2 w-100" %></p>
+      <%= link_to 'Leave a review', new_place_review_path(@place), class: "button btn btn-primary mt-2 w-100" %></p>
       <%= link_to "Chat", chatroom_path(@place.sport_types.first.chatroom), class: "button btn btn-primary mb-2 w-100" %>
     </div>
 
