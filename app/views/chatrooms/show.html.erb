@@ -35,10 +35,10 @@
     </div>  
 
   <div id="chat-message-input">
-    <form autocomplete="off">
-      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+ 
+      <%= simple_form_for [ @chatroom, @message ], remote: true, html: { autocomplete: 'off' } do |f| %>
         <%= f.input :content, label: false, placeholder: "Your message" %>
       <% end %>
-    </form>  
+
   </div>
 </div>
