@@ -1,7 +1,8 @@
 class FavouritesController < ApplicationController
   def index
     # @place = Place.find(params[:place_id])
-    @favourites = policy_scope(Favourite)
+    # @favourites = policy_scope(Favourite)
+    @favourites = current_user.favourites
   end
 
   def create

@@ -4,16 +4,15 @@
     <h5 id="favourite-title">
       <span id="banner-typed-text"></span>
     </h5>
-
   <% @favourites.each do |favourite| %>
     <div class="card-trip">
 
       <% if (favourite.place).photos.attached? %>
         <%= cl_image_tag (favourite.place).photos.first.key, crop: :fit %>
-      <% else %> 
+      <% else %>
         <%= image_tag 'sports_img.jpg', crop: :fill %>
       <% end %>
-      
+
       <div class="card-trip-infos">
         <div>
           <h2><%= link_to (favourite.place).name, place_path(favourite.place) %></h2>
@@ -27,7 +26,5 @@
       </div>
     </div>
     <% end %>
-
-
-  </div>  
+  </div>
 </body>
