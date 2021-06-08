@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'date'
 
-num = 5
+num = 10
 n = 0..num
 
 SportCombination.destroy_all
@@ -47,6 +47,7 @@ surf2 = Place.new(name: "E2/Dianabadschwelle", address: "Himmelreichstraße, 805
 surf2.photos.attach(io: URI.open("https://www.igsm.info/wp-content/uploads/2015/08/Dianabadschwelle.jpg"), filename: 'surf2.png', content_type: 'image/png')
 surf2.sport_types.push(SportType.find_by(name: "Surf"))
 surf2.save
+Visit.create(user: tea, place: surf2, created_at: DateTime.new(2021,7,6,4,5,6))
 
 surf3 = Place.new(name: "Floßlände", address: "Floßlände, Munich", description: "Great for beginners. You can surf here from May to October.", user: isa)
 surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326/1200x675?v=1591172107"), filename: 'surf3.png', content_type: 'image/png')
@@ -61,17 +62,22 @@ CSV.foreach("db/calisthetics.csv") do |row|
     foto = "https://www.hall-of-sports.de/wp-content/uploads/2018/08/E3A1715-1030x686.jpg" #row[0]
     name = row[1]
     address = row[2]
-    place = Place.new(name: name, address:address, description: "Missing description", user: tea)
+    place = Place.new(name: name, address:address, description: "", user: tea)
     place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.jpg", content_type: 'image/png')
     place.sport_types.push(SportType.find_by(name: "Calisthetics"))
     place.save
     count += 1
     # add some visits
-    [arko, isa, tea, andrea].sample do |user|
+    [arko, isa, andrea].sample do |user|
       rand(0..2).times do
         Visit.create(user: user, place: place)
       end
     end
+    # add some visits for Tea!
+    rand(2..4).times do
+      Visit.create(user: tea, place: place)
+    end
+
   end
 end
 puts "#{count} Calisthetics entries seeded"
@@ -92,7 +98,6 @@ document.root.xpath('marker')[n].each do |pp|
   # add visits
   if count <= 2
     month = 1
-    # day = 5
     12.times do
       rand(2..6).times do
         Visit.create(user: tea, place: place, created_at: DateTime.new(2020,month,3,4,5,6))
@@ -101,14 +106,17 @@ document.root.xpath('marker')[n].each do |pp|
     end
     month = 1
     6.times do 
-      rand(0..5).times do
+      rand(1..5).times do
         Visit.create(user: tea, place: place, created_at: DateTime.new(2021,month,3,4,5,6))
+        Visit.create(user: isa, place: place, created_at: DateTime.new(2021,month,6,4,5,6))
       end
       month += 1
+      # add reviews
+      Review.create(user: andrea, place: place, content: "Nice place to play PingPong", rating: 4)
     end
-    # day += 7
   end
   count += 1
+  
 end
 puts "#{count} Ping-Pong entries seeded"
 
@@ -123,7 +131,7 @@ elements[n].each_with_index do |e, i|
   address =  e.text.strip
   address.sub! 'Munich', ' Munich'
   photo = "https://www.courtsoftheworld.com#{doc.css('div.owl-slide-parent a').map { |link| link['href'] }[i]}"
-  p = Place.create(name: "Basketball #{i}", address: address, description: "Missing description", user: isa)
+  p = Place.create(name: "Basketball #{i}", address: address, description: "", user: isa)
   p.photos.attach(io: URI.open(photo), filename: "#{count}.png", content_type: 'image/png')
   p.sport_types.push(SportType.find_by(name: "Basketball"))
   p.save
@@ -139,5 +147,36 @@ puts "#{count} Basketball entries seeded"
 
 
 
+# busy spot for demo
+demo_spot_busy = "Outdoor Gym - Schwabing-West"
+
+# visits:
+Visit.create(user: andrea, place: Place.find_by(name: demo_spot_busy), created_at: DateTime.new(2021,7,11,16,5,6))
+Visit.create(user: isa, place: Place.find_by(name: demo_spot_busy), created_at: DateTime.new(2021,7,11,16,5,6))
+Visit.create(user: arko, place: Place.find_by(name: demo_spot_busy), created_at: DateTime.new(2021,7,11,16,5,6))
+Visit.create(user: andrea, place: Place.find_by(name: demo_spot_busy), created_at: DateTime.new(2021,7,11,16,5,6))
+
+# reviews:
+Review.create(user: andrea, place: Place.find_by(name: demo_spot_busy), content: "Always looking for more players! Feel free to join every Tuesday 7pm", rating: 5)
+Review.create(user: arko, place: Place.find_by(name: demo_spot_busy), content: "Love this place. Great people every time", rating: 5)
+Review.create(user: arko, place: Place.find_by(name: demo_spot_busy), content: "Ruined too many rackets here already", rating: 5)
 
 
+# busy spot for demo
+demo_spot_hated = "Ping-Pong table 504"
+
+# visits:
+Visit.create(user: andrea, place: Place.find_by(name: demo_spot_hated), created_at: DateTime.new(2021,7,11,16,5,6))
+
+# reviews:
+Review.create(user: andrea, place: Place.find_by(name: demo_spot_hated), content: "Why is this place always dirty?", rating: 1)
+Review.create(user: arko, place: Place.find_by(name: demo_spot_hated), content: "Stepped on a rat the other day .. I just can´t ..", rating: 2)
+Review.create(user: arko, place: Place.find_by(name: demo_spot_hated), content: "Nope, this place is shady!", rating: 3)
+
+
+# favourites
+Favourite.create(user: tea, place: Place.find_by(name: demo_spot_busy))
+Favourite.create(user: tea, place: Place.find_by(name: "Ping-Pong table 502"))
+
+Favourite.create(user: isa, place: Place.find_by(name: demo_spot_busy))
+Favourite.create(user: isa, place: Place.find_by(name: "Eisbachwelle"))
