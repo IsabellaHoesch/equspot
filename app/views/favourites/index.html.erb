@@ -1,11 +1,14 @@
   <div class="container">
+
     <h5 id="favourite-title">
       <span id="banner-typed-text"></span>
     </h5>
+
   <div id="chat-section-favourites">
     <p>💬 Join one of the chat rooms:</p>
 
       <div id="chat-icons">
+
         <div id="chat-icon">
             <%= link_to chatroom_path(@basketball.chatroom) do %>
             <i class="fas fa-basketball-ball fa-2x"></i>
@@ -34,7 +37,9 @@
           <% end %> 
         </div>
       </div> 
-    </div>   
+
+    </div>  
+
   </div>  
   
   <div id="background-favourites-cards">
@@ -61,11 +66,11 @@
                     data: { confirm: "Are you sure?" } do %>
           <i class="fas fa-trash-alt"></i>
           <% end %>
-
         </div>
+
       </div>
-    </div>
     <% end %>
+
   </div>
-</body>
+</div>
 
