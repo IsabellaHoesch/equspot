@@ -1,0 +1,10 @@
+<%= link_to chatroom_path(sport_type.chatroom) do %>
+  <i class="<%= sport_type.icon_name %> "></i>
+
+  
+  <p><%= sport_type.name.downcase %><p>
+  <% unread_msg =  sport_type.chatroom.unread_msg(current_user) %>
+  <% if unread_msg.positive? %>
+    <span class="badge badge-warning"><%= unread_msg %></span>
+  <% end %>
+<% end %> 
