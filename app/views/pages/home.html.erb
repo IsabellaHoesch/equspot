@@ -9,23 +9,24 @@
       </div>
   </div>
 </div>
-  <div id="background_home">
-  </div>
 
 <div class= "container">
   <div id="about-txt">
     <p>On EquSpot, you can find all the free outdoor activities available near you. 
     You can select one particular sport or activity and search or 
     just explore through the map.</p>
-    <h5> Browse</h5>
-  </div>
-
-  
-  <div id="map"
-     style="width: 100%; height: 300px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-  <div class="mt-2">
   </div>
 </div>
+   
+<div id="background_home">
+  <div class= "container">
+    <h5 id="map-title"> Browse map</h5>
+    <div id="map"
+      style="width: 100%; height: 300px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>   
+</div>  
+
+

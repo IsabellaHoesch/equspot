@@ -5,8 +5,6 @@ class ChatroomsController < ApplicationController
    # @messages = Message.where
     @message = Message.new()
     authorize @chatroom
-  end
-
-  
+  end 
 
 end
