@@ -32,6 +32,12 @@ class PlacesController < ApplicationController
   def show
     set_place
     @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
+    if @visits_count.zero?
+      @busyness = "Noone is currently here."
+    else
+      @busyness = "This spot is busy with #{@visits_count} players."
+    end
+
     authorize @place
     @markers = [{
         lat: @place.latitude,
