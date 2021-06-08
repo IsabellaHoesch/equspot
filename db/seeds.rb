@@ -148,7 +148,7 @@ puts "#{count} Basketball entries seeded"
 
 
 # busy spot for demo
-demo_spot_busy = "Outdoor Gym - Schwabing-West"
+demo_spot_busy = "Ping-Pong table 506"
 
 # visits:
 Visit.create(user: andrea, place: Place.find_by(name: demo_spot_busy), created_at: DateTime.new(2021,7,11,16,5,6))
