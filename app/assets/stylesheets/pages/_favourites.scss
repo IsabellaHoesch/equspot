@@ -1,13 +1,65 @@
-#background-favourites {
+#background-favourites-cards {
   background-color: #FF8882;
-  height: 100%;
-}
-
-#background-favourites h5 {
-  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 30px;
 }
 
 #favourite-title {
+  color: white;
+  background-color: #FF8882;
+  padding: 3px 3px 3px 10px;
+  border-radius: 4px;
   margin-top: 25px;  
-  margin-bottom: 18px;  
+  margin-bottom: 18px;
+}
+
+#favourite-title2 {
+  color: white;
+  background-color: #FF8882;
+  margin-top: 10px;  
+  margin-bottom: 18px;
+}
+
+#chat-section-favourites {
+  margin-top: 30px;
+}
+
+#chat-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 12px;
+}
+
+#chat-icon {
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  padding-top: 16px;
+  border-radius: 20px;
+  border-radius: 10px;
+  background: #f4f4f4;
+  box-shadow:  6px 6px 12px #e0e0e0,
+             -6px -6px 12px #ffffff;
+}
+
+#chat-icon p {
+  color: #2B5D6C;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.fa-basketball-ball {
+  color: #2B5D6C;
+}
+
+.fa-table-tennis {
+  color: #2B5D6C;
+}
+
+.fa-dumbbell {
+  color: #2B5D6C;
+}
+
+.fa-snowboarding {
+  color: #2B5D6C;
 }
