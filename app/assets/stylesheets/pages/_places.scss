@@ -14,10 +14,34 @@
   background-color: white;
 }
 
-#weather {
+.weather {
+  height: 60px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
   font-size: 13px;
-  color: darkgrey;
-  background-color: #386f80;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding: 0 6px;
+  overflow: hidden;
+  height: 60px;
+  background-color: #2B5D6C;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#weather-item {
+  font-size: 13px;
+  color: rgb(206, 197, 197);
+}
+
+.weather-buffer {
+  height: 60px;
 }
 
 .img-weather {

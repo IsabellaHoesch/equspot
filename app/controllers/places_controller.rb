@@ -33,9 +33,9 @@ class PlacesController < ApplicationController
     set_place
     @visits_count = @place.visits.where("created_at > ?", 180.minutes.ago).count
     if @visits_count.zero?
-      @busyness = "Noone is currently here."
+      @busyness = "No one is currently here."
     else
-      @busyness = "This spot is busy with #{@visits_count} players."
+      @busyness = "#{@visits_count} people are here."
     end
 
     authorize @place

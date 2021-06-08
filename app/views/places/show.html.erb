@@ -1,5 +1,10 @@
-<div>
-  <p id="weather" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>" data-name="<%= @place.name %>" data-apikey="<%=ENV['WEATHER_API_KEY']%>"></p>
+<div class="weather">
+  <div class="container">
+    <p id="weather-item" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>" data-name="<%= @place.name %>" data-apikey="<%=ENV['WEATHER_API_KEY']%>"></p>
+  </div>
+</div>
+
+<div class="weather-buffer">
 </div>
 
 <div class="container">
@@ -38,6 +43,8 @@
     </div>
     <div class="d-flex justify-content-end p-1 mt-1">
       <p><%= link_to 'Check in', place_visits_path(@place), class: "btn btn-outline-primary mt-1 w-100", method: :post%></p>
+      <br>
+      <em><%= @busyness%></em>
     </div>
   </div>
 
@@ -45,7 +52,7 @@
   <div class="parent-show-2 ">
 
     <div class="mt-4 p-3">
-      <span><%= @busyness %></span>
+
     </div>
 
     <div class="mt-4 mb-4">
