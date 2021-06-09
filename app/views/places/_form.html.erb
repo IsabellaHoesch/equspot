@@ -6,27 +6,29 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="mb-0 mt-3" id="messages-bordered-b">
-        <div class="p-1 mt-1">
+        <div class="p-2 mt-1">
           <%= f.input :name, required: :true, as: :text, input_html: {rows: 2}, placeholder: 'Name of the spot', label:false %>
         </div>
-        <div class="p-1">
-          <%= f.input :description, as: :text, input_html: {rows: 5}, placeholder: 'Enter a short description of the spot', label:false %>
+        <div class="p-2">
+          <%= f.input :description, required: :true, as: :text, input_html: {rows: 5}, placeholder: 'Enter a short description of the spot', label:false %>
         </div>
 
-        <div class="p-1">
-          <%= f.input :address, as: :text, input_html: {rows: 2}, placeholder: 'Edelweissweg 10, Munich', label:false %>
+        <div class="p-2">
+          <%= f.input :address, required: :true, as: :text, input_html: {rows: 2}, placeholder: 'Edelweissweg 10, Munich', label:false %>
         </div>
 
-        <div class="d-flex p-2">
-          <div id="upload-button" class="btn-a btn btn-outline-primary w-100">Upload photos</div>
+        <div class="d-flex p-3">
+          <div id="upload-button" class="btn-a btn btn-outline-primary w-100">
+            Upload photos
+          </div>
           <div hidden>
-            <%= f.input :photos, as: :file, hint: '* Add 2 or more photos', input_html: { multiple: true }, label:false %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }, label:false %>
           </div>
           <div class="w-100"></div>
         </div>
 
-        <div class="p-3 mt-1">
-          <%= f.association :sport_types, as: :check_boxes %>
+        <div class="p-4 mt-1">
+          <%= f.association :sport_types, required: :true, as: :check_boxes %>
         </div>
       </div>
 
