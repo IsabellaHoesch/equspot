@@ -1,31 +1,39 @@
-<div class="container p-4">
-  <h3>Sign up</h3>
+<div class="container p-4 mt-4">
+  <div class="p-1">
+    <h3>Sign up</h3>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs mt-4">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-    </div>
+      <div class="form-inputs mt-3">
+        <br>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <br>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+      </div><br>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn-success" %>
-    </div>
-    <br>
-    <div class="d-flex flex-column">
-      <p>Already an account? </p>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: "btn-outline-primary p-2 w-100"  %>
+      </div>
       <br>
-      <%= render "devise/shared/links" %>
-    </div>
-  <% end %>
+      <div class="d-flex justify-content-start">
+        <br>
+        <div>
+          <p>Already an account?</p>
+        </div>
+        <div class="ml-2">
+          <p><%= render "devise/shared/links" %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
