@@ -1,6 +1,6 @@
-<div class="banner" id="parent-home" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path 'cover-img.jpg', crop: :fill %>');">
+<div class="banner d-flex justify-content-center" id="parent-home" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path 'cover-img.jpg', crop: :fill %>');">
 
-  <div class="container" id="child-home">
+  <div class="container " id="child-home">
     <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title"><strong>Equ</strong>Spot</h5>
@@ -29,46 +29,46 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  </div>
 
-  <div class="m-1 p-3">
-    <div class="p-3">
-      <h5 class="text-white">Top places</h5>
-    </div>
-      <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
-    <div class="card-trip">
-          <% if place.photos.attached? %>
-            <%= cl_image_tag place.photos.first.key, crop: :fit %>
-          <% else %>
-            <%= image_tag 'sports_img.jpg', crop: :fill %>
-          <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= link_to place.name, place_path(place) %></h2>
-            <p id="place-address-card"><strong><%= place.address %></strong></p>
-            <p><i><%= place.description %></i></p>
-            <div class="d-flex">
-              <select data-rating= <%= place.average_rating %> data-id= <%= place.id %> name="" class="review-rating" id= <%= "review-#{place.id}" %> >
-                <option value="">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-              <p class="p-1"> (<%= place.visits_count %>)</p>
-            </div>
-          </div>
-
-          <div>
-            <%= link_to place_favourites_path(place), method: :post, params: { "favourite[place_id]" => place.id } do %>
-              <i class="fas fa-crown"></i>
-            <% end %>
-          </div>
-
-        </div>
+    <div class="m-1 p-3">
+      <div class="p-3">
+        <h5 class="text-white">Top places</h5>
       </div>
-      <% end %>
+        <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
+      <div class="card-trip">
+            <% if place.photos.attached? %>
+              <%= cl_image_tag place.photos.first.key, crop: :fit %>
+            <% else %>
+              <%= image_tag 'sports_img.jpg', crop: :fill %>
+            <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to place.name, place_path(place) %></h2>
+              <p id="place-address-card"><strong><%= place.address %></strong></p>
+              <p><i><%= place.description %></i></p>
+              <div class="d-flex">
+                <select data-rating= <%= place.average_rating %> data-id= <%= place.id %> name="" class="review-rating" id= <%= "review-#{place.id}" %> >
+                  <option value="">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <p class="p-1"> (<%= place.visits_count %>)</p>
+              </div>
+            </div>
+
+            <div>
+              <%= link_to place_favourites_path(place), method: :post, params: { "favourite[place_id]" => place.id } do %>
+                <i class="fas fa-crown"></i>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
