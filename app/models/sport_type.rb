@@ -13,7 +13,7 @@ class SportType < ApplicationRecord
       "fas fa-table-tennis fa-2x"
     when "Surf"
       "fas fa-snowboarding fa-2x"
-    when "Calisthetics"
+    when "Calisthenics"
       "fas fa-dumbbell fa-2x"
     else
       "fas fa-basketball-ball fa-2x"
