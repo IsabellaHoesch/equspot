@@ -10,18 +10,18 @@
 
     <form autocomplete="off">
       <div class="pt-1">
-        <div class="p-1">
+        <div class="pt-2">
           <%= form_tag places_path, method: :get do %>
           <%= text_field_tag :query, params[:query],
           placeholder: "Search by location", class: "p-3" %>
         </div>
 
         <div class="form-row mt-2 align-middle p-1 mt-1 ">
-          <div class="col-8 mt-1">
+          <div class="col-8 mt-1 pt-1">
             <%= collection_select :sport, :id, @dropdown, :id, :name, include_blank: true %>
           </div>
 
-          <div class="col-4">
+          <div class="col-4 pt-1">
             <%= submit_tag "Find", class: "btn btn-outline-light mt-1 p-3 w-100 border-radius-index" %>
           </div>
         </div>
