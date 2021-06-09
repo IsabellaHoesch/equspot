@@ -39,7 +39,9 @@ class PlacesController < ApplicationController
     else
       @busyness = "#{@visits_count} people are here."
     end
-
+    @reviews = @place.reviews
+    @ratings = @reviews.map { |review| review.rating }
+    @average_rating = @ratings.sum / @ratings.length
     authorize @place
     @markers = [{
         lat: @place.latitude,

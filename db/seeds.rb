@@ -14,6 +14,7 @@ SportType.destroy_all
 User.destroy_all
 Review.destroy_all
 Visit.destroy_all
+ChatroomVisit.destroy_all
 
 # create sport types and chatrooms
 %w(Basketball Ping-Pong Surf Calisthetics).each do |sporttype|
@@ -25,20 +26,20 @@ end
 
 
 # create users
-arko = User.create(email: "arko@hotmail.com", password: "1234567", first_name: "Armen", last_name: "Kaltak")
-isa = User.create(email: "isa@hotmail.com", password: "1234567", first_name: "Isabella", last_name: "Hoesch")
-tea = User.create(email: "tea@hotmail.com", password: "1234567", first_name: "Tea", last_name: "Filipovic")
-andrea = User.create(email: "andrea@hotmail.com", password: "1234567", first_name: "Andrea", last_name: "Furthmair")
+arko = User.create!(email: "arko@hotmail.com", password: "1234567", first_name: "Armen", last_name: "Kaltak")
+isa = User.create!(email: "isa@hotmail.com", password: "1234567", first_name: "Isabella", last_name: "Hoesch")
+tea = User.create!(email: "tea@hotmail.com", password: "1234567", first_name: "Tea", last_name: "Filipovic")
+andrea = User.create!(email: "andrea@hotmail.com", password: "1234567", first_name: "Andrea", last_name: "Furthmair")
 
 # create places: surf
 surf1 = Place.new(name: "Eisbachwelle", address: "Prinzregentenstraße, 80538 München", description: "Risk of injury is high due to cemented rocks in water.", user: isa)
 surf1.photos.attach(io: URI.open("https://cdn.muenchen-p.de/.imaging/stk/responsive/image980/dms/fg-2018/outdoor-sport/isarsurferin-hp/document/isarsurferin-hp.jpg"), filename: 'surf1.png', content_type: 'image/png')
 surf1.sport_types.push(SportType.find_by(name: "Surf"))
-surf1.save
+surf1.save!
 month = 2
 10.times do
   rand(1..15).times do
-    Visit.create(user: isa, place: surf1, created_at: DateTime.new(2020,month,3,4,5,6))
+    Visit.create!(user: isa, place: surf1, created_at: DateTime.new(2020,month,3,4,5,6))
   end
   month += 1
 end
@@ -46,13 +47,13 @@ end
 surf2 = Place.new(name: "E2/Dianabadschwelle", address: "Himmelreichstraße, 80538, Munich", description: "Surfing here is officially not legal. Please surf quietly here.", user: isa)
 surf2.photos.attach(io: URI.open("https://www.igsm.info/wp-content/uploads/2015/08/Dianabadschwelle.jpg"), filename: 'surf2.png', content_type: 'image/png')
 surf2.sport_types.push(SportType.find_by(name: "Surf"))
-surf2.save
+surf2.save!
 Visit.create(user: tea, place: surf2, created_at: DateTime.new(2021,7,6,4,5,6))
 
 surf3 = Place.new(name: "Floßlände", address: "Floßlände, Munich", description: "Great for beginners. You can surf here from May to October.", user: isa)
 surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326/1200x675?v=1591172107"), filename: 'surf3.png', content_type: 'image/png')
 surf3.sport_types.push(SportType.find_by(name: "Surf"))
-surf3.save
+surf3.save!
 puts "3 Surf entries seeded"
 
 # calisthetics
@@ -62,20 +63,20 @@ CSV.foreach("db/calisthetics.csv") do |row|
     foto = "https://www.hall-of-sports.de/wp-content/uploads/2018/08/E3A1715-1030x686.jpg" #row[0]
     name = row[1]
     address = row[2]
-    place = Place.new(name: name, address:address, description: "", user: tea)
+    place = Place.new(name: name, address:address, description: name, user: tea)
     place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.jpg", content_type: 'image/png')
     place.sport_types.push(SportType.find_by(name: "Calisthetics"))
-    place.save
+    place.save!
     count += 1
     # add some visits
     [arko, isa, andrea].sample do |user|
       rand(0..2).times do
-        Visit.create(user: user, place: place)
+        Visit.create!(user: user, place: place)
       end
     end
     # add some visits for Tea!
     rand(2..4).times do
-      Visit.create(user: tea, place: place)
+      Visit.create!(user: tea, place: place)
     end
 
   end
@@ -105,7 +106,7 @@ document.root.xpath('marker')[n].each do |pp|
       month += 1
     end
     month = 1
-    6.times do 
+    6.times do
       rand(1..5).times do
         Visit.create(user: tea, place: place, created_at: DateTime.new(2021,month,3,4,5,6))
         Visit.create(user: isa, place: place, created_at: DateTime.new(2021,month,6,4,5,6))
@@ -116,7 +117,7 @@ document.root.xpath('marker')[n].each do |pp|
     end
   end
   count += 1
-  
+
 end
 puts "#{count} Ping-Pong entries seeded"
 
