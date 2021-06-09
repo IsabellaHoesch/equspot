@@ -40,12 +40,14 @@
   background: #f4f4f4;
   box-shadow:  6px 6px 12px #e0e0e0,
              -6px -6px 12px #ffffff;
+  position:relative;
 }
 
 #chat-icon p {
   color: #2B5D6C;
   font-size: 10px;
   margin-top: 3px;
+  
 }
 
 .fa-basketball-ball {
@@ -62,4 +64,11 @@
 
 .fa-snowboarding {
   color: #2B5D6C;
+}
+
+.topcorner{
+  position:absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 1em;
 }
