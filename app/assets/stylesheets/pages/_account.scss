@@ -7,7 +7,7 @@
 }
 
 #messages-bordered-a {
-  border-radius: 4px;
+  border-radius: 6px;
   background: #f4f4f4;
   height: 100%;
   box-shadow:  7px 7px 14px #d2d2d2,
@@ -17,7 +17,7 @@
 }
 
 #messages-bordered-b {
-  border-radius: 5px;
+  border-radius: 6px;
   background: #f4f4f4;
   height: 100%;
   box-shadow:  1px 1px 14px #d2d2d2,
@@ -28,4 +28,8 @@
 
 .align-middle{
   vertical-align: middle;
+}
+
+.blue-plus {
+  color: #2B5D6C;
 }
