@@ -22,7 +22,12 @@
   }
 
   .card {
-    padding: 20px;  
+    padding: 20px;
+    background: rgb(245, 244, 244);
+  }
+
+  .card-t {
+    padding: 20px;
     background: rgb(245, 244, 244);
   }
 
@@ -32,8 +37,29 @@
     padding-right: 10px;
   }
 
+  #about-txt-a {
+    margin: 25px;
+    padding-top: 15px;
+    padding-bottom: 1px;
+  }
+
+  .text-white {
+    color: rgb(245, 244, 244);
+    letter-spacing: 3px;
+    font-weight: normal;
+  }
+
   #map-title {
    color: white;
    margin-bottom: 20px;
    padding-left: 5px;
+  }
+
+  #parent-home {
+    position: relative;
+  }
+
+  #child-home {
+    position: absolute;
+    margin-top: 65px;
   }
