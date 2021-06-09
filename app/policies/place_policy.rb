@@ -24,4 +24,8 @@ class PlacePolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+  def destroy?
+    user == record.user
+  end
 end
