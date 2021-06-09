@@ -14,5 +14,5 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :chatroom_visits, dependent: :destroy
-
+  has_one_attached :profile_img
 end
