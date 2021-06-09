@@ -1,6 +1,5 @@
-
-                      
 <div class="container p-4 mt-4">
+
   <div class="p-1">
     <h5><%= @place.name %></h5>
     <p id="grey-text"><%= @place.address %></p><br>
@@ -10,43 +9,48 @@
       <h6 class="p-1 mt-3 mb-0"><%= f.input :content, as: :text, input_html: {rows: 4}, label: "How was the place?" %></h6>
       <div class="p-2">
         <%= f.submit "Send your review",  class: "btn btn-outline-primary p-2 w-100" %>
-      </div>
     <% end %>
   </div>
-  <br><br><br><br>
+
+  <br><br>
+
+  <div id="review-show">
+    <h6>Check what others wrote</h6>
+    <div class="mt-2">
+      <% @place.reviews.order(created_at: :desc).each do |review| %>
+        <div id="show-flex">
+          <div id="show-rating">
+            <select data-rating= <%= review.rating %> data-id= <%= review.id %> name="" class="review-rating" id= <%= "review-#{review.id}" %> >
+              <option value="">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+          <div>
+             <%= review.content %>
+          </div>
+
+          <div id="show-bucket">
+            <%= link_to review_path(review),
+              method: :delete,
+              data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+  <br><br>
 
   <div class="p-2 d-flex justify-content-center mt-2">
     <h6><%= link_to "Go back", :back %></h6>
   </div>
- </div> 
-                      
-<div class="container mt-3">
 
-  <div id="review-show">
-    <h5>Check what others wrote</h5>
-    <% @place.reviews.order(created_at: :desc).each do |review| %>
-      <div id="show-flex">
-        <div id="show-rating">
-          <select data-rating= <%= review.rating %> data-id= <%= review.id %> name="" class="review-rating" id= <%= "review-#{review.id}" %> >
-            <option value="">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <div>
-           <%= review.content %>
-        </div>
-        <div id="show-bucket">
-          <%= link_to review_path(review),
-            method: :delete,
-            data: { confirm: "Are you sure?" } do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
 </div>
