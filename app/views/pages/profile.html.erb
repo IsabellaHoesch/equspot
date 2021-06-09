@@ -6,7 +6,12 @@
         <h3>Your account</h3>
       </div>
       <div class="p-1">
-        <i class="p-1 fas fa-user-circle fa-5x"></i>
+        <% if current_user.profile_img.attached? %>
+          <%= cl_image_tag current_user.profile_img.key, class: "profile-img" %>
+        <% else %>
+          <i class="p-1 fas fa-user-circle fa-5x"></i>
+        <% end %>
+
       </div>
     </div>
 
