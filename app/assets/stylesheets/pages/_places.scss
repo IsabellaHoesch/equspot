@@ -1,17 +1,59 @@
 .parent-show {
-  position: relative;
+  background-size: cover;
+  background-position: center;
+  margin-top: -6px;
 }
 
-.child-show {
-  position: absolute;
-  border-radius: 3px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  margin: 0px 0px;
-  // height: 140px;
-  left: 21px;
-  width: 90%;
-  top: 300px;
-  background-color: white;
+#show-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#show-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#show-card {
+  padding: 10px;
+}
+
+.fa-pen {
+  color: $red;
+}
+
+#place-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px 0 10px;
+  margin-top: 6px;
+}
+
+#place-edit-btn {
+  margin-bottom: 20px;
+}
+
+#place-edit em {
+  color: rgb(131, 131, 131);
+}
+
+.fa-users {
+  color: rgb(131, 131, 131);
+}
+
+.fa-check-square {
+  color: $blue;
+}
+
+#place-description {
+  margin-top: 10px;
+}
+
+#show-card {
+  margin-top: 250px;
 }
 
 .weather {
@@ -27,16 +69,15 @@
   padding: 0 6px;
   overflow: hidden;
   height: 60px;
-  background-color: #2B5D6C;
+  background-color: $blue;
   padding-top: 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-
 #weather-item {
-  font-size: 13px;
+  font-size: 12px;
   color: rgb(206, 197, 197);
 }
 
@@ -49,24 +90,36 @@
 }
 
 #show-flex {
-  background-color: white;
+  display: grid;
+  grid-template-columns: 5fr 6fr 1fr;
+  grid-gap: 15px;
+  border-radius: 10px;
+  background: #f4f4f4;
+  box-shadow:  7px 7px 14px #d2d2d2,
+                 -7px -7px 14px #ffffff;
+  padding: 10px 5px 10px 10px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+#review-show {
+  margin-top: 30px;
+}
+
+#carousel-img {
+  filter: contrast(150%) brightness(100%) sepia(40%);
+}
+
+#review-show h5 {
+  font-style: normal;
+}
+
+#btn-show-end {
+  font-style: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #show-rating {
-  width: 100%;
-  padding: 2px 2px;
-  vertical-align: center;
-}
-
-#show-bucket {
-  text-align: right;
-  padding: 2px 2px;
-}
-
-.parent-show-2 {
-  position: absolute;
-  padding: 5px 5px;
-  width: 90%;
-  top: 470px;
-  left: 22px;
+  display: inline-block;
 }
