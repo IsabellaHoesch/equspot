@@ -12,6 +12,7 @@ class PagesController < ApplicationController
         image_url: helpers.asset_url("#{place.sport_types.first.name}.png")
       }
     end
+    @top_places = Place.where.not(visits_count: nil).order("visits_count desc").limit(10)
   end
 
   def dashboard
