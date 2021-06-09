@@ -44,7 +44,7 @@ CSV.open("calisthetics.csv", "w") do |csv|
     count += 1
     end
 end
-puts "#{count} Calisthetics entries stored"
+puts "#{count} Calisthenics entries stored"
 
 
 

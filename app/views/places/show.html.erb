@@ -6,38 +6,41 @@
   </div>
 </div>
 
-<div class="parent-show" id="show-img" style="background-image: url('<%= cl_image_path @place.photos.first.key, crop: :fit %>');">
-  <div class="container"> 
-          <div class="card mb-3" id="show-card">
-            <div class="card-body">
-              <div id="show-card-top">
-                <h5><%= @place.name %></h5>
-                <%= link_to place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } do %>
-                  <% if user_signed_in? && current_user.favourites.find_by(place: @place).present? %>
-                    <i class="fillcrown fas fa-crown"></i>
-                  <% else %>
-                    <i class="emptycrown fas fa-crown"></i>
+
+
+  <div class="parent-show" id="show-img" style="background-image: url('<%= cl_image_path @place.photos.first.key, crop: :fit %>');">
+  </div>
+      <div class="container"> 
+            <div class="card mb-3" id="show-card">
+              <div class="card-body">
+                <div id="show-card-top">
+                  <h5><%= @place.name %></h5>
+                  <%= link_to place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } do %>
+                    <% if user_signed_in? && current_user.favourites.find_by(place: @place).present? %>
+                      <i class="fillcrown fas fa-crown"></i>
+                    <% else %>
+                      <i class="emptycrown fas fa-crown"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div id="place-description">
-                <p><%= @place.description %></p>
-              </div>
-              <div id="show-card-bottom">
-                <div>
-                  <i class="fas fa-users mr-1"></i>
-                  <em><%= @busyness%></em>
-                </div>  
-                <div>
-                  <%= link_to place_visits_path(@place), method: :post do %>
-                    <i class="far fa-check-square fa-lg mb-1"></i>
-                  <% end %>
+                </div>
+                <div id="place-description">
+                  <p><%= @place.description %></p>
+                </div>
+                <div id="show-card-bottom">
+                  <div>
+                    <i class="fas fa-users mr-1"></i>
+                    <em><%= @busyness%></em>
+                  </div>  
+                  <div>
+                    <%= link_to place_visits_path(@place), method: :post do %>
+                      <i class="far fa-check-square fa-lg mb-1"></i>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-  </div>
-</div>
+    </div>
+
 
 <div class="container">
 

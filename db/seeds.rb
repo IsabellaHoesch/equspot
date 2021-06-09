@@ -16,7 +16,7 @@ Review.destroy_all
 Visit.destroy_all
 
 # create sport types and chatrooms
-%w(Basketball Ping-Pong Surf Calisthetics).each do |sporttype|
+%w(Basketball Ping-Pong Surf Calisthenics).each do |sporttype|
   sport = SportType.new(name: sporttype)
   sport.photo.attach(io: File.open("app/assets/images/#{sporttype}.png"), filename: "#{sporttype}.png", content_type: 'image/png')
   sport.save
@@ -64,7 +64,7 @@ CSV.foreach("db/calisthetics.csv") do |row|
     address = row[2]
     place = Place.new(name: name, address:address, description: "", user: tea)
     place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.jpg", content_type: 'image/png')
-    place.sport_types.push(SportType.find_by(name: "Calisthetics"))
+    place.sport_types.push(SportType.find_by(name: "Calisthenics"))
     place.save
     count += 1
     # add some visits
@@ -139,7 +139,7 @@ elements[n].each_with_index do |e, i|
   # add some visits
   [arko, tea, andrea].sample do |user|
     rand(0..2).times do
-      Visit.new(user: user, place: place)
+      Visit.new(user: user, place: p)
     end
   end
 end
