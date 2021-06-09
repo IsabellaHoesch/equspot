@@ -8,11 +8,19 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
+        <br>
+        <%= f.input :first_name %>
+        <br>
+        <%= f.input :last_name %>
+        <br>
+        <%= f.input :profile_img, as: :file %>
+        <br>
         <%= f.input :email, required: true, autofocus: true %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
+        <br>
         <%= f.input :current_password,
                     hint: "We need your current password to confirm your changes.",
                     required: true,
