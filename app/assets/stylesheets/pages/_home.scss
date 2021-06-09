@@ -12,13 +12,16 @@
 .banner {
     background-size: cover;
     background-position: center;
-    height: 150px;
+    height: 320px;
     padding: 120px 0;
-    margin-bottom: 130px;
+    // margin-bottom: 130px;
   }
 
-  .cover-card {
-    min-height: 200px;
+  #home-card {
+    // position: absolute;
+    margin-top: -30px;
+    padding: 10px 15px 10px 15px;
+    height: 210px;
   }
 
   .card {
@@ -38,15 +41,16 @@
   }
 
   #about-txt-a {
-    margin: 25px;
+    margin: 0 25px 0 25px;
     padding-top: 15px;
     padding-bottom: 1px;
   }
 
   .text-white {
     color: rgb(245, 244, 244);
-    letter-spacing: 3px;
+    // letter-spacing: 3px;
     font-weight: normal;
+    font-size: large;
   }
 
   #map-title {
@@ -59,7 +63,11 @@
     position: relative;
   }
 
-  #child-home {
-    position: absolute;
-    margin-top: 65px;
+  // #child-home {
+  //   position: absolute;
+  //   margin-top: 65px;
+  // }
+
+  .card-title {
+    color: $blue;
   }

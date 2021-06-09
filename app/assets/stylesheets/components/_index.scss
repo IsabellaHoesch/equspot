@@ -3,6 +3,7 @@
 @import "avatar";
 @import "navbar";
 @import "map";
+@import "images";
 
 #background_index {
     background-color: #2B5D6C;
@@ -55,15 +56,15 @@ input[type=text] {
 }
 
 #index-show-btn {
-  border-radius: 10px;
-  background: #2B5D6C;
+  border-radius: 6px;
+  background: #316a7b;
   box-shadow:  9px 9px 19px #1f444f,
              -9px -9px 19px #377689;
 }
 
 #index-show-btn2 {
-  border-radius: 10px;
-  background: #2B5D6C;
+  border-radius: 4px;
+  background: #39778a;
   box-shadow:  5px 5px 4px #265360,
              -5px -5px 4px #306778;
 }

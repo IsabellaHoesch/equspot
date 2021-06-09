@@ -1,19 +1,18 @@
-<div class="banner d-flex justify-content-center" id="parent-home" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path 'cover-img.jpg', crop: :fill %>');">
-
-  <div class="container" id="child-home">
-    <div class="card mb-3">
+<div class="banner d-flex justify-content-center" id="parent-home" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path 'skate_pic.jpg', crop: :fill %>');">
+</div>
+  <div class="container">
+    <div class="card" id="home-card">
         <div class="card-body">
           <h5 class="card-title"><strong>Equ</strong>Spot</h5>
           <p class="card-text mt-3">Find all the free outdoor activities available near you.</p>
           <%= link_to "Search by sport category", places_path, class: "button btn btn-primary mt-1 w-100" %>
-      </div>
+        </div>
     </div>
   </div>
-</div>
 
 <br>
 
-<div class= "container mt-5">
+<div class= "container">
   <div id="about-txt-a">
     <p>On EquSpot, you can find all the free outdoor activities available near you.
     You can select one particular sport or activity and search or
@@ -32,7 +31,7 @@
 
     <div class="m-1">
       <div class="mt-4 mb-4">
-        <h5 class="text-white m-3">Top places</h5>
+        <h5 class="text-white">Top places</h5>
       </div>
         <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
       <div class="card-trip">

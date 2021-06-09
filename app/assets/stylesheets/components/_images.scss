@@ -1,0 +1,27 @@
+.images-show-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+}
+
+.grid-img {
+//   width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: contrast(120%) brightness(80%) sepia(30%);
+}
+
+.grid-img-1 {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: contrast(120%) brightness(80%) sepia(30%);
+  }
+
+
+.images-show-grid-1 {
+   margin-bottom: 15px;
+   width: 100%;
+}
