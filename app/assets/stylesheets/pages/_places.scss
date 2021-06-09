@@ -1,7 +1,15 @@
 .parent-show {
+  margin-top: -6px;
   background-size: cover;
   background-position: center;
-  margin-top: -6px;
+  height: 150px;
+  padding: 140px 0;
+
+}
+
+.banner-show {
+  background-size: cover;
+  background-position: center;
 }
 
 #show-card-top {
@@ -14,10 +22,15 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  bottom: 20px;
 }
 
 #show-card {
-  padding: 10px;
+  // position: absolute;
+  margin-top: -40px;
+  padding: 10px 15px 10px 15px;
+  min-height: 180px;
+
 }
 
 .fa-pen {
@@ -50,10 +63,7 @@
 
 #place-description {
   margin-top: 10px;
-}
-
-#show-card {
-  margin-top: 250px;
+  color: rgb(69, 69, 69);
 }
 
 .weather {
@@ -106,8 +116,12 @@
   margin-top: 30px;
 }
 
-#carousel-img {
-  filter: contrast(150%) brightness(100%) sepia(40%);
+#show-img {
+  filter: contrast(100%) brightness(100%) sepia(40%);
+}
+
+#image-width {
+  width: 100%;
 }
 
 #review-show h5 {
