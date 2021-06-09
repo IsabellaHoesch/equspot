@@ -39,7 +39,13 @@ class PlacesController < ApplicationController
     else
       @busyness = "#{@visits_count} people are here."
     end
-
+    @reviews = @place.reviews
+    @ratings = @reviews.map { |review| review.rating }
+    if @ratings.length.zero?
+      @average_rating = 0
+    else
+      @average_rating = @ratings.sum / @ratings.length
+    end
     authorize @place
     @markers = [{
         lat: @place.latitude,
@@ -77,6 +83,13 @@ class PlacesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    set_place
+    authorize @place
+    @place.destroy
+    redirect_to profile_path, notice: "Spot successfully removed."
   end
 
   private

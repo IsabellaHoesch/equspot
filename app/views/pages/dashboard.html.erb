@@ -6,7 +6,11 @@
 
   <div class="d-flex justify-content-between pr-3 mt-4">
     <div>
-      <i class="fas fa-user-circle fa-3x"></i>
+      <% if current_user.profile_img.attached? %>
+        <%= cl_image_tag current_user.profile_img.key, class: "profile-img" %>
+      <% else %>
+        <i class="fas fa-user-circle fa-3x"></i>
+      <% end %>
     </div>
     <div id="profile-top">
       <p><strong>Check ins</strong></p>

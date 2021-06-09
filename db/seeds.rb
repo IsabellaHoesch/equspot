@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'date'
 
-num = 10
+num = 20
 n = 0..num
 
 SportCombination.destroy_all
@@ -14,6 +14,7 @@ SportType.destroy_all
 User.destroy_all
 Review.destroy_all
 Visit.destroy_all
+ChatroomVisit.destroy_all
 
 # create sport types and chatrooms
 %w(Basketball Ping-Pong Surf Calisthenics).each do |sporttype|
@@ -25,68 +26,73 @@ end
 
 
 # create users
-arko = User.create(email: "arko@hotmail.com", password: "1234567", first_name: "Armen", last_name: "Kaltak")
-isa = User.create(email: "isa@hotmail.com", password: "1234567", first_name: "Isabella", last_name: "Hoesch")
-tea = User.create(email: "tea@hotmail.com", password: "1234567", first_name: "Tea", last_name: "Filipovic")
-andrea = User.create(email: "andrea@hotmail.com", password: "1234567", first_name: "Andrea", last_name: "Furthmair")
+arko = User.create!(email: "arko@hotmail.com", password: "1234567", first_name: "Armen", last_name: "Kaltak")
+isa = User.create!(email: "isa@hotmail.com", password: "1234567", first_name: "Isabella", last_name: "Hoesch")
+tea = User.create!(email: "tea@hotmail.com", password: "1234567", first_name: "Tea", last_name: "Filipovic")
+andrea = User.create!(email: "andrea@hotmail.com", password: "1234567", first_name: "Andrea", last_name: "Furthmair")
 
 # create places: surf
 surf1 = Place.new(name: "Eisbachwelle", address: "Prinzregentenstraße, 80538 München", description: "Risk of injury is high due to cemented rocks in water.", user: isa)
 surf1.photos.attach(io: URI.open("https://cdn.muenchen-p.de/.imaging/stk/responsive/image980/dms/fg-2018/outdoor-sport/isarsurferin-hp/document/isarsurferin-hp.jpg"), filename: 'surf1.png', content_type: 'image/png')
+surf1.photos.attach(io: URI.open("https://www.travelontoast.de/wp-content/uploads/2018/03/4-Eisbachwelle-M%C3%BCnchen-Surfen-Wellenreiten-Bayern-Deutschland-.jpg"), filename: 'surf12.png', content_type: 'image/png')
+surf1.photos.attach(io: URI.open("https://www.spurwechsel-muenchen.de/wp-content/uploads/2018/08/Eisbachwelle-M%C3%BCnchen4.jpg"), filename: 'surf13.png', content_type: 'image/png')
 surf1.sport_types.push(SportType.find_by(name: "Surf"))
-surf1.save
+surf1.save!
 month = 2
 10.times do
   rand(1..15).times do
-    Visit.create(user: isa, place: surf1, created_at: DateTime.new(2020,month,3,4,5,6))
+    Visit.create!(user: isa, place: surf1, created_at: DateTime.new(2020,month,3,4,5,6))
   end
   month += 1
 end
 
 surf2 = Place.new(name: "E2/Dianabadschwelle", address: "Himmelreichstraße, 80538, Munich", description: "Surfing here is officially not legal. Please surf quietly here.", user: isa)
 surf2.photos.attach(io: URI.open("https://www.igsm.info/wp-content/uploads/2015/08/Dianabadschwelle.jpg"), filename: 'surf2.png', content_type: 'image/png')
+surf2.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4052808/704x396?v=1531431532"), filename: 'surf22.png', content_type: 'image/png')
 surf2.sport_types.push(SportType.find_by(name: "Surf"))
-surf2.save
+surf2.save!
 Visit.create(user: tea, place: surf2, created_at: DateTime.new(2021,7,6,4,5,6))
 
 surf3 = Place.new(name: "Floßlände", address: "Floßlände, Munich", description: "Great for beginners. You can surf here from May to October.", user: isa)
 surf3.photos.attach(io: URI.open("https://www.sueddeutsche.de/image/sz.1.4925326/1200x675?v=1591172107"), filename: 'surf3.png', content_type: 'image/png')
 surf3.sport_types.push(SportType.find_by(name: "Surf"))
-surf3.save
+surf3.save!
 puts "3 Surf entries seeded"
 
 # calisthetics
 count = 0
 CSV.foreach("db/calisthetics.csv") do |row|
-  if count <= num
-    foto = "https://www.hall-of-sports.de/wp-content/uploads/2018/08/E3A1715-1030x686.jpg" #row[0]
+  #if count <= num
+    foto = ["https://www.hall-of-sports.de/wp-content/uploads/2018/08/E3A1715-1030x686.jpg", "https://assets.sweat.com/html_body_blocks/images/000/016/679/original/CalisthenicsForBeginners_enf24172b519690b056a24f2dfcf358ec1.jpg?1583473329"].sample
+    foto1 = "https://hips.hearstapps.com/ame-prod-menshealth-assets.s3.amazonaws.com/main/assets/human_flag.jpg?resize=480:*" #row[0]
     name = row[1]
     address = row[2]
-    place = Place.new(name: name, address:address, description: "", user: tea)
+    place = Place.new(name: name, address:address, description: name, user: tea)
     place.photos.attach(io: URI.open("#{foto}"), filename: "#{name}.jpg", content_type: 'image/png')
+    place.photos.attach(io: URI.open("#{foto1}"), filename: "#{name}1.jpg", content_type: 'image/png')
     place.sport_types.push(SportType.find_by(name: "Calisthenics"))
-    place.save
+    place.save!
     count += 1
     # add some visits
     [arko, isa, andrea].sample do |user|
       rand(0..2).times do
-        Visit.create(user: user, place: place)
+        Visit.create!(user: user, place: place)
       end
     end
     # add some visits for Tea!
     rand(2..4).times do
-      Visit.create(user: tea, place: place)
+      Visit.create!(user: tea, place: place)
     end
 
-  end
+  #end
 end
-puts "#{count} Calisthetics entries seeded"
+puts "#{count} Calisthenics entries seeded"
 
 
 # create places: ping-pong
 count = 0
 document  = Nokogiri::XML(File.open('db/pingpong.xml'))
-document.root.xpath('marker')[n].each do |pp|
+document.root.xpath('marker').each do |pp| #[n]
   name = pp.attributes["id"]
   address = pp.attributes['ort']
   description = pp.attributes['info']
@@ -105,9 +111,9 @@ document.root.xpath('marker')[n].each do |pp|
       month += 1
     end
     month = 1
-    6.times do 
+    7.times do
       rand(1..5).times do
-        Visit.create(user: tea, place: place, created_at: DateTime.new(2021,month,3,4,5,6))
+        Visit.create(user: tea, place: place, created_at: DateTime.new(2021,month,8,4,5,6))
         Visit.create(user: isa, place: place, created_at: DateTime.new(2021,month,6,4,5,6))
       end
       month += 1
@@ -116,7 +122,6 @@ document.root.xpath('marker')[n].each do |pp|
     end
   end
   count += 1
-  
 end
 puts "#{count} Ping-Pong entries seeded"
 
@@ -127,7 +132,8 @@ count = 0
 # html_content = URI.open(prep_url).read
 doc = Nokogiri::HTML(File.open('db/basketball.html'), nil, 'utf-8')
 elements = doc.search('.owl-headline')
-elements[n].each_with_index do |e, i|
+#elements[n].each_with_index do |e, i|
+elements.each_with_index do |e, i|
   address =  e.text.strip
   address.sub! 'Munich', ' Munich'
   photo = "https://www.courtsoftheworld.com#{doc.css('div.owl-slide-parent a').map { |link| link['href'] }[i]}"
@@ -137,10 +143,8 @@ elements[n].each_with_index do |e, i|
   p.save
   count += 1
   # add some visits
-  [arko, tea, andrea].sample do |user|
-    rand(0..2).times do
-      Visit.new(user: user, place: p)
-    end
+  rand(0..2).times do
+    Visit.new(user: tea, place: p)
   end
 end
 puts "#{count} Basketball entries seeded"

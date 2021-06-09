@@ -7,6 +7,12 @@
 
       <div class="form-inputs mt-3">
         <br>
+        <%= f.input :first_name %>
+        <br>
+        <%= f.input :last_name %>
+        <br>
+        <%= f.input :profile_img, as: :file %>
+        <br>
         <%= f.input :email,
                     required: true,
                     autofocus: true,

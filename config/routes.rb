@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'pages#profile', as: :profile
   get 'about', to: 'pages#about', as: :about
   get 'contact', to: 'pages#contact', as: :contact
-  resources :places, only: [ :index, :new, :create, :show, :edit, :update ] do
+  resources :places, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     resources :favourites, only: [ :create ]
     resources :visits, only: [ :create ]
     resources :reviews, only: [ :new, :create ]

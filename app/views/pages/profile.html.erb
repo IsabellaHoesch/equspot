@@ -6,7 +6,12 @@
         <h3>Your account</h3>
       </div>
       <div class="p-1">
-        <i class="p-1 fas fa-user-circle fa-5x"></i>
+        <% if current_user.profile_img.attached? %>
+          <%= cl_image_tag current_user.profile_img.key, class: "profile-img" %>
+        <% else %>
+          <i class="p-1 fas fa-user-circle fa-5x"></i>
+        <% end %>
+
       </div>
     </div>
 
@@ -32,7 +37,9 @@
     <div class="p-1">
       <h5 class="ml-2"><%= current_user.places.count %> Spots</h5>
       <div class="mt-4 p-1">
-        <div class="align-middle btn btn-outline-light mt-1 p-4 w-100" id="messages-bordered-a"> <%= link_to new_place_path do %><h6 class="mt-2 blue-plus far fa-plus-square fa-lg"></h6>
+        <div class="btn btn-a btn-outline-light mt-1 p-4 w-100">
+          <%= link_to new_place_path do %>
+          <h6 class="mt-2 blue-plus far fa-plus-square fa-lg"></h6>
           <% end %>
         </div>
       </div>
@@ -46,6 +53,9 @@
             <div class="d-flex justify-content-between">
               <h5><%= link_to place.name, place_path(place) %></h5>
               <p id="grey-text"> <%= link_to "Edit", edit_place_path(place) %></p>
+              <p id="grey-text"> <%= link_to "Remove", place_path(place),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></p>
             </div>
             <p id="grey-text"><%= place.address %></p>
             <%= place.description %>
@@ -97,7 +107,7 @@
     </div>
 
     <div class="p-3"><br><br><br>
-      <p><%= link_to 'Change password', edit_user_registration_path %></p>
+      <p><%= link_to 'User settings', edit_user_registration_path %></p>
       <p class="mb-0">Unhappy? <%= link_to "Delete your account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
 
