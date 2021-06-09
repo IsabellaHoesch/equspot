@@ -37,6 +37,10 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+    const weirdButton = document.querySelector(".mapboxgl-ctrl-attrib");
+    if(weirdButton) {
+      weirdButton.remove();
+    }
   }
 };
 
