@@ -13,7 +13,7 @@
       <% end %>
     </div>
     <div id="profile-top">
-      <p><strong>Check ins</strong></p>
+      <p><strong>Total check-ins</strong></p>
       <span><strong><%= current_user.visits.count %></strong></span>
     </div>
     <div id="profile-top">
@@ -25,7 +25,7 @@
   <div class="mt-4">
     <p>You´ve had <strong><%= @visit_this_month %></strong>
     activities this month. This is a change in activity of
-    <strong><%= @percentage_change_month %>%.</strong>
+    <strong><%= @percentage_change_month %>% since last month.</strong>
     <strong><%= @motivational_msg %></strong></p>
   </div>
 
