@@ -86,9 +86,10 @@ class PlacesController < ApplicationController
   end
 
   def destroy
-    @place = Place.find_by(params[:id])
+    set_place
     authorize @place
     @place.destroy
+    redirect_to profile_path, notice: "Spot successfully removed."
   end
 
   private

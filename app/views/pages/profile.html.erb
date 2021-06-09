@@ -46,6 +46,9 @@
             <div class="d-flex justify-content-between">
               <h5><%= link_to place.name, place_path(place) %></h5>
               <p id="grey-text"> <%= link_to "Edit", edit_place_path(place) %></p>
+              <p id="grey-text"> <%= link_to "Remove", place_path(place),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></p>
             </div>
             <p id="grey-text"><%= place.address %></p>
             <%= place.description %>
