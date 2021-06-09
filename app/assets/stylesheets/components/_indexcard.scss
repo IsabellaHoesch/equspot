@@ -2,7 +2,7 @@
     overflow: hidden;
     background: rgb(245, 244, 244);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 15px;
     border-radius: 4px;
   }
@@ -34,19 +34,13 @@
 
 
   .card-trip .card-trip-infos {
-    padding: 16px;
+    padding: 10px 15px 15px 15px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     position: relative;
   }
 
-  .card-trip-infos .card-trip-user {
-    position: absolute;
-    right: 16px;
-    top: -20px;
-    width: 40px;
-  }
 
 .fa-trash-alt {
   color: #2B5D6C;
