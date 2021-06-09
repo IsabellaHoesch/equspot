@@ -33,7 +33,7 @@
 
   <div class="m-1 p-3">
     <div class="p-3">
-      <h5 class="text-white">Highest rated places</h5>
+      <h5 class="text-white">Top places</h5>
     </div>
       <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
     <div class="card-trip">
