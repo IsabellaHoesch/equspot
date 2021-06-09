@@ -85,6 +85,12 @@ class PlacesController < ApplicationController
     end
   end
 
+  def destroy
+    @place = Place.find_by(params[:id])
+    authorize @place
+    @place.destroy
+  end
+
   private
 
   def set_place
