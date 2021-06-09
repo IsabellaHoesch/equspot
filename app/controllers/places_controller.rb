@@ -41,7 +41,11 @@ class PlacesController < ApplicationController
     end
     @reviews = @place.reviews
     @ratings = @reviews.map { |review| review.rating }
-    @average_rating = @ratings.sum / @ratings.length
+    if @ratings.length.zero?
+      @average_rating = 0
+    else
+      @average_rating = @ratings.sum / @ratings.length
+    end
     authorize @place
     @markers = [{
         lat: @place.latitude,
