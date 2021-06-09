@@ -55,7 +55,6 @@ document.addEventListener('turbolinks:load', () => {
     })
   }
 
-
 });
 
 import { loadDynamicBannerText } from '../components/banner';

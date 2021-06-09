@@ -6,33 +6,33 @@
     margin-bottom: 15px;
     border-radius: 4px;
   }
-  
+
   .card-trip > img {
-    height: 100px;
+    height: 140px;
     width: 100%;
     object-fit: cover;
     // opacity: 80%;
     // filter: grayscale(100%) contrast(120%);
     // filter: sepia(30%);
-    padding: 5px;
+    padding: 8px;
     border-radius: 4px;
     filter: contrast(150%) brightness(100%) sepia(40%);
   }
-  
+
   .card-trip h2 {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
-  
+
   .card-trip p {
     font-size: 13px;
     opacity: .7;
     margin: 0;
     margin-top: 5px;
   }
-  
-  
+
+
   .card-trip .card-trip-infos {
     padding: 16px;
     display: flex;
@@ -49,5 +49,5 @@
   }
 
 .fa-trash-alt {
-  color: #2B5D6C; 
+  color: #2B5D6C;
 }
