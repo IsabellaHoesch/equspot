@@ -152,7 +152,7 @@ puts "#{count} Basketball entries seeded"
 
 
 # busy spot for demo
-demo_spot_busy = "Ping-Pong table 506"
+demo_spot_busy = "Ping-Pong table 2679"
 
 # visits:
 Visit.create(user: andrea, place: Place.find_by(name: demo_spot_busy), created_at: DateTime.new(2021,7,11,16,5,6))
@@ -180,7 +180,15 @@ Review.create(user: arko, place: Place.find_by(name: demo_spot_hated), content: 
 
 # favourites
 Favourite.create(user: tea, place: Place.find_by(name: demo_spot_busy))
-Favourite.create(user: tea, place: Place.find_by(name: "Ping-Pong table 502"))
+Favourite.create(user: tea, place: Place.find_by(name: "Ping-Pong table 3564"))
+Favourite.create(user: tea, place: Place.find_by(name: "Ping-Pong table 4782"))
+Favourite.create(user: tea, place: Place.find_by(name: "Ping-Pong table 4854"))
+Favourite.create(user: tea, place: Place.find_by(name: "Ping-Pong table 6163"))
+Favourite.create(user: tea, place: Place.find_by(name: "Bewegungspark 4F Circle Schwabing"))
+Favourite.create(user: tea, place: Place.find_by(name: "Eisbachwelle"))
+
 
 Favourite.create(user: isa, place: Place.find_by(name: demo_spot_busy))
 Favourite.create(user: isa, place: Place.find_by(name: "Eisbachwelle"))
+Review.create(user: arko, place: Place.find_by(name: "Eisbachwelle"), content: "Crowded at every hour...", rating: 2)
+Review.create(user: andrea, place: Place.find_by(name: "Eisbachwelle"), content: "Coming here makes me happy every time", rating: 5)
