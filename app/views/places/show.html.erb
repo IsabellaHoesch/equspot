@@ -13,7 +13,7 @@
               <div id="show-card-top">
                 <h5><%= @place.name %></h5>
                 <%= link_to place_favourites_path(@place), method: :post, params: { "favourite[place_id]" =>  @place.id } do %>
-                  <% if current_user.favourites.find_by(place: @place).present? %>
+                  <% if user_signed_in? && current_user.favourites.find_by(place: @place).present? %>
                     <i class="fillcrown fas fa-crown"></i>
                   <% else %>
                     <i class="emptycrown fas fa-crown"></i>
