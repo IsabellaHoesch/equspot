@@ -7,7 +7,7 @@
       </div>
       <div class="p-1">
         <% if current_user.profile_img.attached? %>
-          <%= cl_image_tag current_user.profile_img.key, class: "profile-img" %>
+          <%= cl_image_tag current_user.profile_img.key, class: "avatar-andrea profile-img" %>
         <% else %>
           <i class="p-1 fas fa-user-circle fa-5x"></i>
         <% end %>
