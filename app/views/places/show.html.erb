@@ -22,7 +22,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-
+      
         <div class="container"> 
           <div class="card mb-3" id="show-card">
             <div class="card-body">
@@ -52,12 +52,14 @@
               </div>
             </div>
           </div>
+          
         </div>
     </div> 
   </div>
 </div>
 
 <div class="container">
+
 
   <div id="place-edit">
     <% if @place.user == current_user %>
@@ -96,11 +98,13 @@
         </div>
         <div id="show-bucket">
           <%= link_to review_path(review),
+
             method: :delete,
             data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
         </div>
+
       </div>
     <% end %>
   </div>

@@ -1,3 +1,25 @@
+
+                      
+<div class="container p-4 mt-4">
+  <div class="p-1">
+    <h5><%= @place.name %></h5>
+    <p id="grey-text"><%= @place.address %></p><br>
+
+    <%= simple_form_for([@place, @review], html: { class: "review_form" }) do |f| %>
+      <h6 class="p-1 mt-3"><%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", id: 'review_rating' %></h6>
+      <h6 class="p-1 mt-3 mb-0"><%= f.input :content, as: :text, input_html: {rows: 4}, label: "How was the place?" %></h6>
+      <div class="p-2">
+        <%= f.submit "Send your review",  class: "btn btn-outline-primary p-2 w-100" %>
+      </div>
+    <% end %>
+  </div>
+  <br><br><br><br>
+
+  <div class="p-2 d-flex justify-content-center mt-2">
+    <h6><%= link_to "Go back", :back %></h6>
+  </div>
+ </div> 
+                      
 <div class="container mt-3">
 
   <div id="review-show">

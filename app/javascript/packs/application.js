@@ -33,12 +33,19 @@ import "chartkick/chart.js"
 import { initMapbox } from '../plugins/init_mapbox';
 import { weatherApi } from '../plugins/init_weather';
 import { initStarRating } from '../plugins/init_star_rating';
+import { initChatroomCable } from '../channels/chatroom_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initStarRating();
   initMapbox();
   weatherApi();
+  setTimeout(function(){
+    $(".alert.alert-info").fadeTo(500,0,function(){
+        $(this).remove()
+        })
+    },2500)
+  initChatroomCable();
 });
 
 import { loadDynamicBannerText } from '../components/banner';
