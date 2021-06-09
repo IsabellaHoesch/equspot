@@ -22,8 +22,8 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      
-        <div class="container"> 
+
+        <div class="container">
           <div class="card mb-3" id="show-card">
             <div class="card-body">
               <div id="show-card-top">
@@ -43,7 +43,7 @@
                 <div>
                   <i class="fas fa-users mr-1"></i>
                   <em><%= @busyness%></em>
-                </div>  
+                </div>
                 <div>
                   <%= link_to place_visits_path(@place), method: :post do %>
                     <i class="far fa-check-square fa-lg mb-1"></i>
@@ -52,9 +52,9 @@
               </div>
             </div>
           </div>
-          
+
         </div>
-    </div> 
+    </div>
   </div>
 </div>
 
@@ -65,12 +65,12 @@
     <% if @place.user == current_user %>
       <div>
         <em>You created this place<em>
-      </div> 
+      </div>
       <div id="place-edit-btn">
         <%=  link_to edit_place_path(@place)do %>
           <i class="fas fa-pen fa-lg"></i>
         <% end %>
-      </div>  
+      </div>
     <% end %>
   </div>
   <div id="map"
@@ -78,9 +78,9 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  
+
   <div id="review-show">
-    <h5>Recent reviews</h5>
+    <h5>Recent reviews // Avg.rating = <%= @average_rating %></h5>
     <% @place.reviews.order(created_at: :desc).limit(3).each do |review| %>
       <div id="show-flex">
         <div id="show-rating">
