@@ -1,7 +1,7 @@
 <div class="container p-4 mt-3">
   <div class="p-1">
 
-    <h3>New password</h3>
+    <h3>Update your account</h3>
     <br>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -13,9 +13,11 @@
         <br>
         <%= f.input :last_name %>
         <br>
-        <%= f.input :profile_img, as: :file %>
+        <div class="p-2 mb-3">
+          <%= f.input :profile_img, as: :file %>
+        </div>
         <br>
-        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "first-name" } %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -27,23 +29,21 @@
                     input_html: { autocomplete: "current-password" } %>
         <br>
         <%= f.input :new_password,
-                    required: true,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
-                    required: true,
                     input_html: { autocomplete: "new-password" } %>
       </div>
 
       <br>
       <div class="form-actions">
         <div>
-          <%= f.button :submit, "Reset password", class: "btn btn-outline-primary p-2 w-100"%>
+          <%= f.button :submit, "Save changes", class: "btn btn-outline-primary p-2 w-100"%>
           <% end %>
         </div>
 
         <br><br>
 
-        <div class="p-2 d-flex justify-content-center mt-1">
+        <div class="p-2 d-flex justify-content-center mt-1 mb-3">
           <h6><%= link_to "Go back", :back %></h6>
         </div>
       </div>

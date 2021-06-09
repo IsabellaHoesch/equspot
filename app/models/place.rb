@@ -11,4 +11,12 @@ class Place < ApplicationRecord
   validates :address, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  def average_rating
+    ratings = reviews.map { |review| review.rating }
+    if ratings.length.zero?
+      0
+    else
+      ratings.sum / ratings.length
+    end
+  end
 end

@@ -16,7 +16,7 @@
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email" }%>
+                    input_html: { autocomplete: 'off' }%>
         <br>
         <%= f.input :password,
                     required: true,
@@ -27,11 +27,11 @@
                     input_html: { autocomplete: "new-password" } %>
       </div><br>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: "btn-outline-primary p-2 w-100"  %>
+      <div class="form-actions p-1">
+        <%= f.button :submit, "Sign up", class: "btn-a btn-outline-primary p-2 w-100"  %>
       </div>
       <br>
-      <div class="d-flex justify-content-start">
+      <div class="d-flex justify-content-start mt-2">
         <br>
         <div>
           <p>Already an account?</p>

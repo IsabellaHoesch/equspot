@@ -4,14 +4,14 @@ class FavouritesController < ApplicationController
     @favourites = current_user.favourites
     @surf = SportType.find_by(name: "Surf")
     @basketball = SportType.find_by(name: "Basketball")
-    @calisthenics = SportType.find_by(name: "Calisthetics")
+    @calisthenics = SportType.find_by(name: "Calisthenics")
     @ping_pong = SportType.find_by(name: "Ping-Pong")
   end
 
   def show
     @surf = SportType.find_by(name: "Surf")
     @basketball = SportType.find_by(name: "Basketball")
-    @calisthenics = SportType.find_by(name: "Calisthetics")
+    @calisthenics = SportType.find_by(name: "Calisthenics")
     @ping_pong = SportType.find_by(name: "Ping-Pong")
   end
 
