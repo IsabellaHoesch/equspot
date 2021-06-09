@@ -39,7 +39,7 @@
 
   <div class="mt-5">
     <p><strong>Most frequent activity</strong></p>
-    <%= bar_chart @user.sport_types.group(:name).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C"], legend: "bottom" %>
+    <%= bar_chart @user.sport_types.group(:name).count, width: "100%", height: "200px", colors: ["#FF8882", "#2B5D6C"], legend: false %>
   </div>
 
   <div class="mt-5">
