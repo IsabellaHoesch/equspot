@@ -8,7 +8,7 @@
 
   <div class="parent-show" id="show-img" style="background-image: url('<%= cl_image_path @place.photos.first.key, crop: :fit %>');">
   </div>
-      <div class="container"> 
+      <div class="container">
             <div class="card mb-3" id="show-card">
               <div class="card-body">
                 <div id="show-card-top">
@@ -28,7 +28,7 @@
                   <div>
                     <i class="fas fa-users mr-1"></i>
                     <em><%= @busyness%></em>
-                  </div>  
+                  </div>
                   <div>
                     <%= link_to place_visits_path(@place), method: :post do %>
                       <i class="far fa-check-square fa-lg mb-1"></i>
@@ -62,19 +62,20 @@
 
   <div id="review-show">
 
-      <select data-rating="<%= @average_rating %>" data-id="total" name="" class="review-rating" id="review-total">
-        <option value="">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+    <div class="card rating-direction">
 
+        <select data-rating="<%= @average_rating %>" data-id="total" name="" class="review-rating" id="review-total">
+          <option value="">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
 
+        <p class="m-2">(<%= @reviews.count %>)</p>
 
-
-
+    </div>
 
     <% @place.reviews.order(created_at: :desc).limit(3).each do |review| %>
       <div id="show-flex">

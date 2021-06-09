@@ -1,9 +1,6 @@
-#show-rating-2x {
-  background-color: #f4f4f4;
-  height: 100%;
-  border-radius: 4px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
-
+#show-rating-1 {
+  display: flex;
+  justify-content: space-between;
 }
 
 #messages-bordered-a {
