@@ -31,7 +31,7 @@
     </div>
 
     <div class="m-1">
-      <div >
+      <div class="mt-4 mb-4">
         <h5 class="text-white m-3">Top places</h5>
       </div>
         <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
