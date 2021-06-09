@@ -46,6 +46,16 @@ document.addEventListener('turbolinks:load', () => {
         })
     },2500)
   initChatroomCable();
+
+  const button = document.getElementById('upload-button')
+  if (button) {
+    const fileButton = document.getElementById('place_photos')
+    button.addEventListener('click', (event) => {
+      fileButton.click()
+    })
+  }
+
+
 });
 
 import { loadDynamicBannerText } from '../components/banner';
