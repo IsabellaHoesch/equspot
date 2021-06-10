@@ -1,5 +1,5 @@
 meta_product_name: "EquSpot"
 meta_title: "EquSpot - The sport event for you"
 meta_description: "Find your favourite sport courts wherever you are"
-meta_image: "cover-img.jpg" # should exist in `app/assets/images/`
+meta_image: "og-image.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
