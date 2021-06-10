@@ -141,7 +141,7 @@ month = 1
   day = 5
   4.times do
     rand(1..2).times do
-      Visit.create(user: tea, place: Place.find_by(name: tea_fav_visit.sample), created_at: DateTime.new(2020,month,6, 4,5,6), checkin: DateTime.new(2020,month,day, 4,5,6))
+      Visit.create(user: tea, place: Place.find_by(name: tea_fav_visit.sample), created_at: DateTime.new(2020, month, day), checkin: DateTime.new(2020,month,day))
     end
     day += 5
   end
@@ -154,7 +154,7 @@ month = 1
   day = 5
   4.times do
     rand(0..3).times do
-    Visit.create(user: tea, place: Place.find_by(name: tea_fav_visit.sample), created_at: DateTime.new(2021, month, 9, 4, 5, 6), checkin: DateTime.new(2021, month, 6, 4,5,6))
+    Visit.create(user: tea, place: Place.find_by(name: tea_fav_visit.sample), created_at: DateTime.new(2021, month, day), checkin: DateTime.new(2021, month, day))
     end
     day += 5
   end
