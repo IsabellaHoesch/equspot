@@ -1,20 +1,21 @@
- <div id="cover-video">
- <%= video_tag "cover_video", autoplay: :autoplay, loop: :loop, muted: :muted, class: 'banner', crop: :fill %>
-  <div>
 
-  <div class="container">
-      <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Equ</strong>Spot</h5>
-            <p class="card-text mt-3">Find all the free outdoor activities available near you.</p>
-            <%= link_to "Search by sport category", places_path, class: "button btn btn-primary mt-1 w-100" %>
-        </div>
-      </div>
-  </div>
+<div class="banner d-flex justify-content-center" id="parent-home" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path 'skate_pic.jpg', crop: :fill %>');">
 </div>
 
+  <div class="container">
+    <div class="card" id="home-card">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Equ</strong>Spot</h5>
+          <p class="card-text mt-3">Find all the free outdoor activities available near you.</p>
+          <%= link_to "Search by sport category", places_path, class: "button btn btn-primary mt-1 w-100" %>
+        </div>
+    </div>
+  </div>
+
+<br>
+
 <div class= "container">
-  <div id="about-txt">
+  <div id="about-txt-a">
     <p>On EquSpot, you can find all the free outdoor activities available near you.
     You can select one particular sport or activity and search or
     just explore through the map.</p>
@@ -22,21 +23,55 @@
 </div>
 
 <div id="background_home">
-  <div class= "container">
+  <div class="container">
     <div id="map"
+      class="mb-0 p-2"
       style="width: 100%; height: 300px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+
+    <div class="m-1">
+      <div class="mt-4 mb-4">
+        <h5 class="text-white">Top places</h5>
+      </div>
+        <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
+      <div class="card-trip">
+            <% if place.photos.attached? %>
+              <%= cl_image_tag place.photos.first.key, crop: :fit %>
+            <% else %>
+              <%= image_tag 'sports_img.jpg', crop: :fill %>
+            <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to place.name, place_path(place) %></h2>
+              <p id="place-address-card"><strong><%= place.address %></strong></p>
+              <p><i><%= place.description %></i></p>
+              <div class="d-flex rating-direction mt-2">
+                <i class="fas fa-users mt-2 p-1"></i>
+                <p class="p-1"> <%= place.visits_count %> people are here</p><p class="pt-4 ml-5"></p>
+                <select data-rating= <%= place.average_rating %> data-id= <%= place.id %> name="" class="review-rating" id= <%= "review-#{place.id}" %> >
+                  <option value="">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <%= link_to place_favourites_path(place), method: :post, params: { "favourite[place_id]" => place.id } do %>
+                <i class="fas fa-crown"></i>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-<div>
-<ol>
-  <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
-  <li><%= place.name %>//<%= place.visits_count %></li>
-  <% end %>
-</ol>
-
-</div>
-
 

@@ -7,18 +7,17 @@
   border-radius: 6px;
   background: #f4f4f4;
   height: 100%;
-  box-shadow:  7px 7px 14px #d2d2d2,
-                 -7px -7px 14px #ffffff;
+  box-shadow:  7px 7px 14px #d2d2d2;
   padding: 10px;
   vertical-align: middle;
 }
 
-.btn-a, #upload-button {
+.btn-a, .upload-button {
   border-radius: 5px;
   background: #f4f4f4;
   height: 100%;
   box-shadow:  1px 1px 14px #d2d2d2,
-                 -7px -7px 14px #ffffff;
+            -7px -7px 14px #ffffff;
   padding: 10px;
   width: 80%;
   vertical-align: middle;
@@ -30,7 +29,7 @@
   background: #f4f4f4;
   height: 100%;
   box-shadow:  1px 1px 14px #d2d2d2,
-                 -7px -7px 14px #ffffff;
+          -7px -7px 14px #ffffff;
   padding: 10px;
   vertical-align: middle;
 }
@@ -42,6 +41,6 @@
 
 .blue-plus {
   color: #2B5D6C;
-  background-color: #ffffff;
+  background-color: #d2d2d2;
 }
 

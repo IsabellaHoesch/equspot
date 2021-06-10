@@ -21,14 +21,27 @@
   #cover-video {
     width: 100%;
     top: 0;
+
+    // height: 320px;
+    // padding: 120px 0;
+    // margin-bottom: 130px;
+
   }
 
-  .cover-card {
-    min-height: 200px;
+  #home-card {
+    // position: absolute;
+    margin-top: -30px;
+    padding: 10px 15px 10px 15px;
+    height: 210px;
   }
 
   .card {
-    padding: 20px;  
+    padding: 20px;
+    background: rgb(245, 244, 244);
+  }
+
+  .card-t {
+    padding: 20px;
     background: rgb(245, 244, 244);
   }
 
@@ -38,8 +51,33 @@
     padding-right: 10px;
   }
 
+  #about-txt-a {
+    margin: 0 25px 0 25px;
+    padding-bottom: 1px;
+  }
+
+  .text-white {
+    color: rgb(245, 244, 244);
+    // letter-spacing: 3px;
+    font-weight: normal;
+    font-size: large;
+  }
+
   #map-title {
    color: white;
    margin-bottom: 20px;
    padding-left: 5px;
+  }
+
+  #parent-home {
+    position: relative;
+  }
+
+  // #child-home {
+  //   position: absolute;
+  //   margin-top: 65px;
+  // }
+
+  .card-title {
+    color: $blue;
   }

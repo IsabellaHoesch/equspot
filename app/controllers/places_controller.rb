@@ -34,7 +34,7 @@ class PlacesController < ApplicationController
     if @visits_count.zero?
       @busyness = "No one is currently here."
     elsif @visits_count == 1
-      @busyness = "One person is here."
+      @busyness = "1 person is here."
     else
       @busyness = "#{@visits_count} people are here."
     end
