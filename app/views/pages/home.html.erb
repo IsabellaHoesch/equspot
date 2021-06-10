@@ -31,45 +31,41 @@
 
     <div class="m-1">
       <div class="mt-4 mb-4">
-        <h5 class="text-white">Top places</h5>
+        <h5 class="text-white">Most popular</h5>
       </div>
         <% Place.where.not(visits_count: nil).order("visits_count desc").limit(10).each do |place| %>
-      <div class="card-trip">
-            <% if place.photos.attached? %>
-              <%= cl_image_tag place.photos.first.key, crop: :fit %>
-            <% else %>
-              <%= image_tag 'sports_img.jpg', crop: :fill %>
+        <div class="card-trip">
+          <% if place.photos.attached? %>
+            <%= cl_image_tag place.photos.first.key, crop: :fit %>
+          <% else %>
+            <%= image_tag 'sports_img.jpg', crop: :fill %>
+          <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to place.name, place_path(place) %></h2>
+            <p id="place-address-card"><strong><%= place.address %></strong></p>
+            <p><i><%= place.description %></i></p>
+            <div>
+              <select data-rating= <%= place.average_rating %> data-id= <%= place.id %> name="" class="review-rating" id= <%= "review-#{place.id}" %> >
+                <option value="">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <%= link_to place_favourites_path(place), method: :post, params: { "favourite[place_id]" => place.id } do %>
+              <i class="fas fa-crown"></i>
             <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to place.name, place_path(place) %></h2>
-              <p id="place-address-card"><strong><%= place.address %></strong></p>
-              <p><i><%= place.description %></i></p>
-              <div class="d-flex rating-direction mt-2">
-                <i class="fas fa-users mt-2 p-1"></i>
-                <p class="p-1"> <%= place.visits_count %> people are here</p><p class="pt-4 ml-5"></p>
-                <select data-rating= <%= place.average_rating %> data-id= <%= place.id %> name="" class="review-rating" id= <%= "review-#{place.id}" %> >
-                  <option value="">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <%= link_to place_favourites_path(place), method: :post, params: { "favourite[place_id]" => place.id } do %>
-                <i class="fas fa-crown"></i>
-              <% end %>
-            </div>
-
           </div>
         </div>
+      </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+
 
