@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     # @sporttypes = SportType.all
     @visit_this_month = @user.visits.where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month).count
     @visit_past_month = @user.visits.where(created_at: Time.zone.now.prev_month(1) .. Time.zone.now.beginning_of_month).count 
-    @percentage_change_month = (((@visit_this_month-@visit_past_month).to_f/(@visit_past_month).to_f) * 100).nan? ? 0 : (((@visit_this_month-@visit_past_month).to_f/(@visit_past_month).to_f) * 100).round(0)
+    @percentage_change_month = @visit_this_month.zero? || @visit_past_month.zero?  ? 0 : (((@visit_this_month-@visit_past_month).to_f/(@visit_past_month).to_f) * 100).round(0)
     @motivational_msg = @percentage_change_month.positive? ? "Great job!" : "#{@user.first_name}, you´re slacking! Get going!"
   end
 
