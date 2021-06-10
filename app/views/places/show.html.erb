@@ -59,6 +59,13 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+ 
+<% @place.photos.first(5).each_with_index do |photo, i| %>
+  <div class="images-show-grid-1">
+    <% next if i.zero? %>
+    <%= cl_image_tag photo.key, class: 'grid-img-1' %>
+  </div>
+<% end %>
 
   <div id="review-show">
 
@@ -104,6 +111,7 @@
       </div>
     <% end %>
   </div>
+
   <div id="btn-show-end">
     <%= link_to 'Leave a review', new_place_review_path(@place), class: "btn btn-primary w-100" %></p>
     <%= link_to "Chat", chatroom_path(@place.sport_types.first.chatroom), class: "btn btn-primary w-100" %>
